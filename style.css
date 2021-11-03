@@ -96,6 +96,10 @@ h2 {
   flex: 0 0 500px;
 }
 
+.content-container3 h2 {
+  margin-bottom: 50px;
+}
+
 .main-cities {
   display: flex;
 
@@ -150,7 +154,7 @@ nav a:visited {
   text-decoration: none;
 }
 
-.login {
+.green-btn {
   display: inline-block;
   padding: 5px 10px;
   font-size: 20px;
@@ -186,12 +190,12 @@ nav a:visited {
   color: #252825;
 }
 
-.login:hover,
+.green-btn:hover,
 .find-worker:hover {
   background-color: #3e8e41;
 }
 
-.login:active,
+.green-btn:active,
 .find-worker:active {
   background-color: #3e8e41;
   box-shadow: 0 2px #666;
