@@ -59,11 +59,21 @@
         <main class="main">
             <div class="l-form container">
                 <form action="" class="form">
-                    <a href="login.html" class="account__cselect active-link">Sign In</a>
-                    <a href="register.html" class="inactive__select account__cselect">Register</a>
-                    <h1 class="form__title">Sign In</h1>
-                    <p class="form__description">Sign in to continue to our site</p>
+                    <a href="login.html" class="inactive__select account__cselect">Sign In</a>
+                    <a href="register.html" class="account__cselect active-link">Register</a>
+                    <h1 class="form__title">Register</h1>
+                    <p class="form__description">Create an account to start using our service.</p>   
+                                     
+                    <div class="form__div">
+                        <input type="text" class="form__input" placeholder=" ">
+                        <label for="" class="form__label">First name</label>
+                    </div>
 
+                    <div class="form__div">
+                        <input type="text" class="form__input" placeholder=" ">
+                        <label for="" class="form__label">Last name</label>
+                    </div>
+                
                     <div class="form__div">
                         <input type="text" class="form__input" placeholder=" ">
                         <label for="" class="form__label">Email</label>
@@ -74,7 +84,12 @@
                         <label for="" class="form__label">Password</label>
                     </div>
 
-                    <input type="submit" class="button" value="Sign In">
+                    <div class="form__div">
+                        <input type="password" class="form__input" placeholder=" ">
+                        <label for="" class="form__label">Confirm password</label>
+                    </div>
+
+                    <input type="submit" class="button" value="Create an account">
                 </form>
             </div>
         </main>
