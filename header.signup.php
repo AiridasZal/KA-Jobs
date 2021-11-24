@@ -47,13 +47,13 @@
                             if (isset($_SESSION["useruid"])) {
                                 echo 
                                     "<li class='nav__item'>
-                                        <a href='profile.php' class='nav__link active-link'>Profile page</a>
+                                        <a href='profile.php#profile' class='nav__link active-link'>Profile page</a>
                                     </li>";
                             }
                             else{
                                 echo
                                     "<li class='nav__item'>
-                                        <a href='login.php' class='nav__link-fix button__menu'>Sign In</a>
+                                        <a href='login.php#login' class='nav__link-fix button__menu'>Sign In</a>
                                     </li>";
                             }
                             ?>
@@ -67,7 +67,7 @@
                 </div>
                 <?php
                     if (!isset($_SESSION["useruid"])) {
-                        echo "<a href='login.php' class='button button__header'>Sign In</a>";
+                        echo "<a href='login.php#login' class='button button__header'>Sign In</a>";
                     }
                     else{
                         echo 

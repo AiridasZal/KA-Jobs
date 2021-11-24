@@ -49,6 +49,10 @@
                                     "<li class='nav__item'>
                                         <a href='profile.php' class='nav__link'>Profile page</a>
                                     </li>";
+                                echo
+                                    "<li class='nav__item'>
+                                    <a href='includes/logout.inc.php' class='nav__link-fix button__menu'>Log out</a>
+                                    </li>";
                             }
                             else{
                                 echo
@@ -66,11 +70,11 @@
                     <i class='bx bx-menu'></i>
                 </div>
                 <?php
-                    if (!isset($_SESSION["useruid"])) {
-                        echo "<a href='login.php' class='button button__header'>Sign In</a>";
+                    if (isset($_SESSION["useruid"])) {
+                        echo "<a href='includes/logout.inc.php' class='button button__header'>Log out</a>";
                     }
                     else{
-                        echo "<a href='includes/logout.inc.php' class='button button__header'>Log out</a>";
+                        echo "<a href='login.php' class='button button__header'>Sign In</a>";
                     }
                 ?>
             </nav>

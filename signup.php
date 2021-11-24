@@ -1,5 +1,10 @@
 <?php
-    include_once 'header.signup.php';
+    ini_set('display_errors',0);
+    session_start();
+    if (isset($_SESSION["useruid"])) {
+        header("location: profile.php");
+    }
+    include_once 'header.php';
 ?>
         <!--=============== SIGN IN SIDE ===============-->
         <main class="main">
@@ -64,5 +69,5 @@
             </div>
         </main>
 <?php
-    include_once 'footer.signup.php';
+    include_once 'footer.php';
 ?>
