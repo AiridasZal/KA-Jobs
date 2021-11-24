@@ -47,6 +47,8 @@
     --normal-font-size: 1rem;
     --small-font-size: .875rem;
     --smaller-font-size: .813rem;
+    --input-color: hsl(var(--hue), 4%, 65%);
+   --border-color: #DADCE0;
   }
 }
 
@@ -88,7 +90,115 @@ img {
   max-width: 100%;
   height: auto;
 }
+/* login shit */
 
+.l-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 968px;
+  height: 80vh;
+  margin-top: var(--header-height);
+  margin-left: var(--mb-1-5);
+  margin-right: var(--mb-1-5);
+  row-gap: 3rem;
+}
+.l-grid{
+  grid-column-gap: 1.5rem;
+}
+.form{
+  width: 360px;
+  padding: 2rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(92,99,105,.2);
+}
+.form__title{
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  padding-top: 1.5rem;
+}
+.form__description{
+    margin-bottom: var(--mb-2);
+}
+
+.form__div{
+  position: relative;
+  height: 48px;
+  margin-bottom: 1.5rem;
+}
+.form__input{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  font-size: var(--normal-font-size);
+  border: 1px solid var(--border-color);
+  border-radius: .5rem;
+  outline: none;
+  padding: 1rem;
+  background: none;
+  z-index: 1;
+}
+.form__label{
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  padding: 0 .25rem;
+  background-color: #fff;
+  color: var(--input-color);
+  font-size: var(--normal-font-size);
+  transition: .3s;
+}
+
+input[type="submit" i] {
+    border: none;
+    width: 100%;
+    font-family: var(--body-font);
+    font-weight: var(--font-bold);
+    cursor: pointer;
+}
+
+/*Input focus move up label*/
+.form__input:focus + .form__label{
+  top: -.5rem;
+  left: .8rem;
+  color: var(--first-color);
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  z-index: 10;
+}
+
+/*Input focus sticky top label*/
+.form__input:not(:placeholder-shown).form__input:not(:focus)+ .form__label{
+  top: -.5rem;
+  left: .8rem;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  z-index: 10;
+}
+
+/*Input focus*/
+.form__input:focus{
+  border: 1.5px solid var(--first-color);
+}
+
+/* Login or Register selector*/
+
+.account__cselect{
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+    transition: .3s;
+    justify-content: normal;
+    padding-right: 5px;
+  }
+  
+  .inactive__select{
+      color: var(--text-color-light)
+  }
+  .account__cselect:hover{
+    color: var(--first-color);
+  }
 /*=============== REUSABLE CSS CLASSES ===============*/
 .section {
   padding: 4.5rem 0 1rem;
@@ -518,7 +628,21 @@ img {
   }
 }
 
-
+/* login form footer */
+@media screen and (min-width: 360px){
+  .footer-account {
+      position: absolute;
+      bottom: 0px;
+      width: 100vw;
+      vertical-align: middle;
+      text-align: center;
+      font-size: var(--smaller-font-size);
+      font-weight: var(--font-semi-bold);
+      color: var(--text-color);
+      background-color: var(--first-color-lighten);
+      padding: 0.5rem 0 0.5rem;
+    }
+}
 
 /* For medium devices */
 @media screen and (min-width: 576px) {
