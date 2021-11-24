@@ -1,5 +1,5 @@
 <?php
-    include_once 'header.signup.php';
+    include_once 'header.php';
 ?>
 <main class="main">
         <!--=============== HOME ===============-->
@@ -20,6 +20,6 @@
 </main>
 
 <?php
-    include_once 'footer.signup.php';
+    include_once 'footer.php';
 ?>
 
