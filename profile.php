@@ -1,4 +1,9 @@
 <?php
+    ini_set('display_errors',0);
+    session_start();
+    if (!isset($_SESSION["useruid"])) {
+        header("location: login.php");
+    }
     include_once 'header.php';
 ?>
 <main class="main">
