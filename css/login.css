@@ -1,4 +1,5 @@
 /*===== VARIABLES CSS =====*/
+
 :root{
   --input-color: hsl(var(--hue), 4%, 65%);
   --border-color: #DADCE0;
@@ -70,6 +71,7 @@ input[type="submit" i] {
     font-weight: var(--font-bold);
     cursor: pointer;
 }
+
 
 /*Input focus move up label*/
 .form__input:focus + .form__label{

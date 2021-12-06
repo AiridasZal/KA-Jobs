@@ -118,3 +118,58 @@ function loginUser($conn, $username, $pwd){
         exit();
     }
 }
+
+function emptyInputJob($title, $location, $price, $category, $subcategory, $desc){
+    $result;
+    if(empty($title) || empty($location) || empty($price) || empty($category) || empty($subcategory) || empty($desc)){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
+function invalidPrice($price){
+    $result = is_nan($price);
+    return $result;
+}
+
+function tooShortTitle($title){
+    $result;
+    if(strlen($title) < 5){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
+function tooShortDesc($desc){
+    $result;
+    if(strlen($desc) < 10){
+        $result = true;
+    }
+    else{
+        $result = false;
+    }
+    return $result;
+}
+
+function createJobList($conn, $title, $location, $price, $category, $subcategory, $desc){
+    session_start();
+    $sql = "INSERT INTO jobs (usersId, jobsTitle, jobsLocation, jobsPrice, jobsCategory, jobsSubCategory, jobsDesc) VALUES (?,?,?,?,?,?,?);";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../add-job.php?error=stmtfailed");
+        exit();
+    }
+
+    $usersId = $_SESSION["userid"];
+
+    mysqli_stmt_bind_param($stmt, "issdsss", $usersId, $title, $location, $price, $category, $subcategory, $desc);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../add-job.php?error=none");
+}

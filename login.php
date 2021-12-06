@@ -18,7 +18,7 @@
 
                     <div class="form__div">
                         <input type="text" class="form__input" name="uid" placeholder=" ">
-                        <label for="" class="form__label">Email</label>
+                        <label for="" class="form__label">Email/Username</label>
                     </div>
 
                     <div class="form__div">
