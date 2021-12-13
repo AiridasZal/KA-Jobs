@@ -96,5 +96,5 @@
         </script>
 
 <?php
-    include_once 'footer.php';
+    include_once 'footer.signup.php';
 ?>
