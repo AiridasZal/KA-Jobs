@@ -1,3 +1,15 @@
+Nueinat i PHPMYADMIN ir prisijungiat
+Primenu prisijungimo duomenis:
+
+user: root
+password: vertrigo
+
+Spaudziat ant jobly duomenu bazes (ritinys kaireje ekrano puseje)
+Virsuj matot rankrasciu icon, kur parasyta SQL ir spaudziat ji
+I laukeli nukopijuojat koda esanti zemiau ir spaudziat go.
+
+po ivykdymo turetu jobly duomenu bazeje atsirasti nauja lente pavadinumu "gallery"
+
 CREATE TABLE gallery (
    	 galleryId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   	 jobsId int(11) NOT NULL,
