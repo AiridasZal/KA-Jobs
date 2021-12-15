@@ -1,0 +1,7 @@
+CREATE TABLE gallery (
+   	 galleryId int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  	 jobsId int(11) NOT NULL,
+   	 imageFullName  LONGTEXT NOT NULL,
+   	 galleryOrder LONGTEXT NOT NULL,
+   	 FOREIGN KEY (jobsId) REFERENCES jobs(jobsId)
+);

@@ -113,15 +113,17 @@ input[type="submit" i] {
   .account__cselect:hover{
     color: var(--first-color);
   }
-  .footer-account {
-      position: absolute;
-      bottom: 0px;
-      width: 100vw;
-      vertical-align: middle;
-      text-align: center;
-      font-size: var(--smaller-font-size);
-      font-weight: var(--font-semi-bold);
-      color: var(--text-color);
-      background-color: var(--first-color-lighten);
-      padding: 0.5rem 0 0.5rem;
-    }
+
+
+.footer-account {
+	position: absolute;
+    bottom: 0px;
+    width: 100vw;
+    vertical-align: middle;
+    text-align: center;
+    font-size: var(--smaller-font-size);
+    font-weight: var(--font-semi-bold);
+    color: var(--text-color);
+    background-color: var(--first-color-lighten);
+    padding: 0.5rem 0 0.5rem;
+} 

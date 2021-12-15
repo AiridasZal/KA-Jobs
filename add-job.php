@@ -59,6 +59,9 @@
                         else if($_GET["error"] == "descshort"){
                             echo '<p class=errormessage style="text-align: center;">Description is too short!</p>';
                         }
+                        else if($_GET["error"] == "stmtfailed"){
+                            echo '<p class=errormessage style="text-align: center;">Could not connect to the database</p>';
+                        }
                     }
                     ?>
                     </form>

@@ -35,13 +35,6 @@ if (isset($_POST["submit"])) {
         header("location: ../add-job.php?error=descshort");
         exit();
     }
-    //createJobList($conn, $title, $location, $price, $category, $subcategory, $desc);
-    //unset($_SESSION["title"]);
-    //unset($_SESSION["location"]);
-    //unset($_SESSION["price"]);
-    //unset($_SESSION["category"]);
-    //unset($_SESSION["subcategory"]);
-    //unset($_SESSION["desc"]);
     header("location: ../add-images.php");
 }
 else{

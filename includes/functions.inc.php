@@ -159,17 +159,127 @@ function tooShortDesc($desc){
 
 function createJobList($conn, $title, $location, $price, $category, $subcategory, $desc){
     session_start();
-    $sql = "INSERT INTO jobs (usersId, jobsTitle, jobsLocation, jobsPrice, jobsCategory, jobsSubCategory, jobsDesc) VALUES (?,?,?,?,?,?,?);";
+
+    $sql = "SELECT * FROM jobs WHERE usersId = ? AND jobsTitle = ? AND jobsLocation = ? AND jobsPrice = ? AND jobsCategory = ? AND jobsSubCategory = ? AND jobsDesc = ?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("location: ../add-job.php?error=stmtfailed");
         exit();
     }
+    
+    $usersId = $_SESSION["userid"];
 
+    mysqli_stmt_bind_param($stmt, "issdsss", $usersId, $title, $location, $price, $category, $subcategory, $desc);
+    mysqli_stmt_execute($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
+    if ($row = mysqli_fetch_assoc($resultData)) {
+        mysqli_stmt_close($stmt);
+        return;
+    }
+    mysqli_stmt_close($stmt);
+
+    $sql = "INSERT INTO jobs (usersId, jobsTitle, jobsLocation, jobsPrice, jobsCategory, jobsSubCategory, jobsDesc) VALUES (?,?,?,?,?,?,?);";
+    $stmt = mysqli_stmt_init($conn);
+    
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../add-job.php?error=stmtfailed");
+        exit();
+    }
+    
     $usersId = $_SESSION["userid"];
 
     mysqli_stmt_bind_param($stmt, "issdsss", $usersId, $title, $location, $price, $category, $subcategory, $desc);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../add-job.php?error=none");
+
+    //------------------------------------------------------------------------------------------------------------------------
+}
+function uploadImage($conn, $title, $location, $price, $category, $subcategory, $desc, $fileNameNew, $fileTmpName, $fileDestination){
+    session_start();
+    $sql = "SELECT * FROM jobs WHERE usersId = ? AND jobsTitle = ? AND jobsLocation = ? AND jobsPrice = ? AND jobsCategory = ? AND jobsSubCategory = ? AND jobsDesc = ?;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../add-images.php?error=stmtfailed");
+        exit();
+    }
+
+    $usersId = $_SESSION["userid"];
+    
+    mysqli_stmt_bind_param($stmt, "issdsss", $usersId, $title, $location, $price, $category, $subcategory, $desc);
+    mysqli_stmt_execute($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
+    if ($row = mysqli_fetch_assoc($resultData)) {
+        $jobNumber = $row["jobsId"];
+    }
+    mysqli_stmt_close($stmt);
+    //-------------------------------------------------------------------------------------------------------------------------
+
+    $sql = "SELECT * FROM gallery WHERE jobsId=$jobNumber;";
+    $result = $conn->query($sql);
+    if ($result = mysqli_query($conn, $sql)) {
+        // Return the number of rows in result set
+        $rowcount = mysqli_num_rows( $result );
+    }
+    if($rowcount == 0){
+        $order = 1;
+        $sql = "INSERT INTO gallery (jobsId, imageFullName, galleryOrder) VALUES (?,?,?);";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../add-images.php?error=stmtfailed");
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "isi", $jobNumber, $fileNameNew, $order);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    
+        move_uploaded_file($fileTmpName, $fileDestination);
+        header("location: ../add-images.php?error=none");
+    }
+    else if($rowcount == 1){
+        $order = 2;
+        $sql = "INSERT INTO gallery (jobsId, imageFullName, galleryOrder) VALUES (?,?,?);";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../add-images.php?error=stmtfailed");
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "isi", $jobNumber, $fileNameNew, $order);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        
+        move_uploaded_file($fileTmpName, $fileDestination);
+        header("location: ../add-images.php?error=none");
+    }
+    else if($rowcount == 2){
+        $order = 3;
+        $sql = "INSERT INTO gallery (jobsId, imageFullName, galleryOrder) VALUES (?,?,?);";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../add-images.php?error=stmtfailed");
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "isi", $jobNumber, $fileNameNew, $order);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+        
+        move_uploaded_file($fileTmpName, $fileDestination);
+        unset($_SESSION["title"]);
+        unset($_SESSION["location"]);
+        unset($_SESSION["price"]);
+        unset($_SESSION["category"]);
+        unset($_SESSION["subcategory"]);
+        unset($_SESSION["desc"]);
+        header("location: ../index.php");
+        exit();
+    }
+    else{
+        unset($_SESSION["title"]);
+        unset($_SESSION["location"]);
+        unset($_SESSION["price"]);
+        unset($_SESSION["category"]);
+        unset($_SESSION["subcategory"]);
+        unset($_SESSION["desc"]);
+        header("location: ../index.php");
+        exit();
+    }
 }

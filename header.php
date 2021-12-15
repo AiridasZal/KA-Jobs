@@ -39,7 +39,7 @@
                                 <a href="index.php#locations" class="nav__link">Locations</a>
                             </li>
                             <li class="nav__item">
-                                <a href="#jobs" class="nav__link">Jobs</i></a>
+                                <a href="jobs.php" class="nav__link">Jobs</i></a>
                             </li>
                             <li class="nav__item">
                                 <a href="index.php#contact" class="nav__link">Contact us</a>

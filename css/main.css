@@ -1,0 +1,50 @@
+.form-div { margin-top: 100px; border: 1px solid #e0e0e0; }
+#profileDisplay { display: block; height: 210px; width: 200px; margin: 0px auto; border-radius: 60%; }
+.img-placeholder {
+  width: 200px;
+  color: white;
+  height: 50%;
+  background: black;
+  opacity: .7;
+  height: 210px;
+  border-radius: 100%;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+
+.img-placeholder h4 {
+  margin-top: 45%;
+  margin-left: 20%;
+  color: white;
+}
+
+.img-div:hover .img-placeholder {
+    display: block;
+    cursor: pointer;
+}
+@media (max-width: 460px){
+	#profileDisplay {
+		display: block;
+		height: 160px;
+		width: 150px;
+		margin: 0px auto;
+		border-radius: 60%;
+	}
+	.img-placeholder {
+  width: 150px;
+  color: white;
+  height: 50%;
+  background: black;
+  opacity: .7;
+  height: 160px;
+  border-radius: 100%;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+}
+}
