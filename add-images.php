@@ -39,7 +39,7 @@
                             echo '<p class=errormessage style="text-align: center;">File size is too big!</p>';
                         }
                         else if($_GET["error"] == "none"){
-                            echo '<p class=errormessage style="text-align: center;">Image uploaded successfully!</p>';
+                            echo '<p class=errormessage style="text-align: center;">Image uploaded successfully, upload another image!</p>';
                         }
                         else if($_GET["error"] == "stmtfailed"){
                             echo '<p class=errormessage style="text-align: center;">Could not connect to the database</p>';
