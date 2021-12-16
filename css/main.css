@@ -17,7 +17,7 @@
 
 .img-placeholder h4 {
   margin-top: 45%;
-  margin-left: 20%;
+  margin-left: 23%;
   color: white;
 }
 
@@ -34,17 +34,22 @@
 		border-radius: 60%;
 	}
 	.img-placeholder {
-  width: 150px;
-  color: white;
-  height: 50%;
-  background: black;
-  opacity: .7;
-  height: 160px;
-  border-radius: 100%;
-  z-index: 2;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  display: none;
-}
+    width: 150px;
+    color: white;
+    height: 50%;
+    background: black;
+    opacity: .7;
+    height: 160px;
+    border-radius: 100%;
+    z-index: 2;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+  }
+  .img-placeholder h4 {
+    margin-top: 45%;
+    margin-left: 15%;
+    color: white;
+  }
 }
