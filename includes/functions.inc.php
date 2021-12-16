@@ -269,7 +269,7 @@ function uploadImage($conn, $title, $location, $price, $category, $subcategory, 
         unset($_SESSION["category"]);
         unset($_SESSION["subcategory"]);
         unset($_SESSION["desc"]);
-        header("location: ../index.php");
+        header("location: ../add-check.php");
         exit();
     }
     else{
@@ -279,7 +279,7 @@ function uploadImage($conn, $title, $location, $price, $category, $subcategory, 
         unset($_SESSION["category"]);
         unset($_SESSION["subcategory"]);
         unset($_SESSION["desc"]);
-        header("location: ../index.php");
+        header("location: ../add-check.php");
         exit();
     }
 }
