@@ -11,7 +11,7 @@
                         <p class="home__description">Employ a variety of specialists to complete various household tasks!</p>
                         
                         <a href="jobs.html" class="button button_home_fix"><img src="img/searchjob.png" class="img__size button_img" alt="Find Worker"> Find Worker</a>
-                        <a href="add-job.html" class="button button_home_fix"><img src="img/addjob.png" class="img__size button_img" alt="Find job"> Create listing</a>
+                        <a href="add-job.php" class="button button_home_fix"><img src="img/addjob.png" class="img__size button_img" alt="Find job"> Create listing</a>
                     </div>
                 </div>
             </section>
