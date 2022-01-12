@@ -28,7 +28,10 @@
 		
          <section class="home section" id="home">
                  <div style="margin-left: px; text-align: center;">
-				 	<img src="img/404notfound.gif" id="notfoundimg">
+					 <video autoplay muted play id="notfoundimg">
+        					<source src="img/Error404.mp4">
+							Sorry, your browser doesn't support embedded videos.
+        				</video>
                     <h1 class="home__title">Oops.</h1>
 					<h2>We can't find the page you're looking for...</h2>
 					<br>
