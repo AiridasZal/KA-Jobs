@@ -17,7 +17,7 @@
             <p class="form__description">General information     2/3</p>
             <div class="form-group text-center" style="position: relative;" >
                 <span class="img-div">
-                    <div class="text-center img-placeholder"  onClick="triggerClick()">
+                    <div class="img-placeholder"  onClick="triggerClick()">
                         <h4>Upload image</h4>
                     </div>
                     <img src="img/emptyimg.png" onClick="triggerClick()" id="profileDisplay">
@@ -39,7 +39,7 @@
                             echo '<p class=errormessage style="text-align: center;">File size is too big!</p>';
                         }
                         else if($_GET["error"] == "none"){
-                            echo '<p class=errormessage style="text-align: center;">Image uploaded successfully!</p>';
+                            echo '<p class=errormessage style="text-align: center;">Image uploaded successfully, upload another image!</p>';
                         }
                         else if($_GET["error"] == "stmtfailed"){
                             echo '<p class=errormessage style="text-align: center;">Could not connect to the database</p>';
