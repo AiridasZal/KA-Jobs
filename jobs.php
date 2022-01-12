@@ -34,7 +34,7 @@
         if(empty($_GET['job'])){
             echo "<main class='main'>";
             echo "<section class='home section' id='home'>
-            <div class='home__container container grid'>";
+            <div class='container grid_coll_3 container_job'>";
             while($data = $result->fetch_assoc()){
 
                 $sql2 = "SELECT * FROM gallery WHERE jobsId={$data['jobsId']} AND galleryOrder=1";
