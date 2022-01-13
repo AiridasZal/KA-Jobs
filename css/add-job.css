@@ -78,3 +78,51 @@
   .header{
     z-index: 5;
   }
+
+  .job-title{
+  color: var(--title-color);
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-semi-bold);
+  text-align: center;
+  }
+
+  .back-button{
+    background-color: var(--first-color-light);
+  }
+  .back-button:hover{
+    background-color: var(--first-color-lighten);
+  }
+  
+  .upload-items-center{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    row-gap: 5px;
+    padding-bottom: 1.5rem;
+  }
+
+  .upload-arrow{
+    padding-top: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .job-form{
+      width: 740px;
+      padding: 2rem 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px rgba(92,99,105,.2);
+  }
+
+  .info_list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: center;
+    justify-content: space-evenly;
+  }
+
+  .job_current{
+    font-weight: var(--font-semi-bold);
+  }
+  
