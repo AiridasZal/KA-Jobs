@@ -1,10 +1,9 @@
 <?php
     ini_set('display_errors',0);
     session_start();
-    if (!isset($_SESSION["useruid"])) {
-        header("location: login.php");
-    }
     include_once 'header.php';
+    require_once 'includes/dbh.inc.php';
+    require_once 'includes/functions.inc.php';
 ?>
 <main class="main">
         <!--=============== HOME ===============-->
@@ -12,7 +11,19 @@
                 <div class=" container">
                     <div class="title">
                         <h1 class="job_title">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            <?php
+                            $s = $_GET['job'];
+                            $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                            $stmt = mysqli_stmt_init($conn);
+                            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                header("location: jobs.php?error=stmtfailed");
+                                exit();
+                            }
+                            $result = $conn->query($sql) or die($conn->error);
+                            while($data = $result->fetch_assoc()){
+                                echo "<h1 style='font-size: 40px;'>{$data['jobsTitle']}</h1>";
+                            }
+                            ?>
                         </h1>
                     </div>
                         <div class="job_describtion_profile grid_coll_2">
@@ -20,33 +31,132 @@
                             <div class="main_decribtion">
 
                                 <div class="photos">
-                                    <img id="main_img" class="job_img_main" src="uploads/61bb06aa01e498.88125614.jpg" alt="job img">
+                                <?php $s = $_GET['job'];
+                                        $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $result = $conn->query($sql) or die($conn->error);
+                                        while($data = $result->fetch_assoc()){
+                                            $sql = "SELECT * FROM gallery WHERE jobsId={$data['jobsId']} AND galleryOrder=1 ";
+                                            $result2 = $conn->query($sql) or die($conn->error);
+                                            while($data2 = $result2->fetch_assoc()){
+                                                echo "<img id='main_img' class='job_img_main' src='uploads/{$data2['imageFullName']}' alt='job img'>";
+                                            }
+                                        }
+                                        mysqli_stmt_close($stmt);?>
 
                                     
                                     <div class="img_gallery grid_3">
                                         
-                                        <button class="img_btn" id="btn1"> <img class="job_img" src="uploads/61bb030a175d90.85068967.jpg" alt="job img" ></button>
-                                        <button class="img_btn" id="btn2"><img class="job_img" src="uploads/61bb06aa01e498.88125614.jpg" alt="job img" ></button> 
-                                        <button class="img_btn" id="btn3"> <img class="job_img" src="uploads/61bb06562fa539.22708589.jpg" alt="job img" ></button>
-                                        
+                                    <?php
+                                        $s = $_GET['job'];
+                                        $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $result = $conn->query($sql) or die($conn->error);
+                                        while($data = $result->fetch_assoc()){
+                                            $sql = "SELECT * FROM gallery WHERE jobsId={$data['jobsId']}";
+                                            $result2 = $conn->query($sql) or die($conn->error);
+                                            $i = 1;
+                                            while($data2 = $result2->fetch_assoc()){
+                                                echo "
+                                                <button class='img_btn' id='btn".$i."'> <img class='job_img' src='uploads/{$data2['imageFullName']}' alt='job img' ></button>
+                                                ";
+                                                $i++;
+                                            }
+                                        }
+                                        mysqli_stmt_close($stmt);
+                                    ?>
                                     </div>
                                 </div>
                                     <div class="job_info">
-                                        <h2 class="describtion">Describtion</h2>
-                                        <p class="job_inform">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, repudiandae at iusto beatae id laudantium ratione vitae libero! Eveniet laboriosam officia esse sunt nobis exercitationem, maxime quod minima cum ipsum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste dignissimos itaque hic iusto est? Voluptatem, sit reprehenderit? Nihil magni repellendus incidunt quos aperiam commodi nesciunt quibusdam nulla, asperiores deserunt necessitatibus!locale_filter_matches Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quod at dolorem quia voluptatum nulla assumenda veritatis fuga, aspernatur veniam, ullam eum modi corrupti velit nostrum accusamus dignissimos illum quibusdam!</p>
+                                        <h2 class="describtion">Description</h2>
+                                        <?php
+                                            $s = $_GET['job'];
+                                            $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                            $stmt = mysqli_stmt_init($conn);
+                                            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                                header("location: jobs.php?error=stmtfailed");
+                                                exit();
+                                            }
+                                            $result = $conn->query($sql) or die($conn->error);
+                                            while($data = $result->fetch_assoc()){
+                                                echo "<p class=job_inform style='font-size: 24px;'>{$data['jobsDesc']}</p>";
+                                            }
+                                            mysqli_stmt_close($stmt);
+                                        ?>
                                     </div>
                                     <div class="contact_us">
                                             <h3 class="contact_us_info">To contact us:</h3>
                                             <div>
-                                            <p><strong>Seller:</strong> Vardas P.</p>
-                                    <p><strong>Location:</strong> Klaipėda</p>
-                                    <p><strong>Starting price:</strong> 15$</p>
-                                <p><strong>Delivery time:</strong> 1 day</p>
-                                <a class="phone_numb" href="tel:+37060000000" >+370 600 00000</a>
+                                            <?php
+                                                $s = $_GET['job'];
+                                                $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                                $stmt = mysqli_stmt_init($conn);
+                                                if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                                    header("location: jobs.php?error=stmtfailed");
+                                                    exit();
+                                                }
+                                                $result = $conn->query($sql) or die($conn->error);
+                                                while($data = $result->fetch_assoc()){
+                                                    $sql3 = "SELECT * FROM users WHERE usersId={$data['usersId']}";
+                                                    $result3 = $conn->query($sql3) or die($conn->error);
+                                                    while($data3 = $result3->fetch_assoc()){
+                                                        echo "<p><strong>Seller:</strong> {$data3['usersName']}</p>";
+                                                    }
+                                                    echo "<p><strong>Location:</strong> {$data['jobsLocation']}</p>";
+                                                    echo "<p><strong>Starting price:</strong> {$data['jobsPrice']}€</p>";
+                                                    echo "<p><strong>Jobs category:<br></strong> {$data['jobsCategory']}</p>";
+                                                }
+                                                mysqli_stmt_close($stmt);
+                                            ?>
+                                            <?php
+                                                $s = $_GET['job'];
+                                                $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                                $stmt = mysqli_stmt_init($conn);
+                                                if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                                    header("location: jobs.php?error=stmtfailed");
+                                                    exit();
+                                                }
+                                                $result = $conn->query($sql) or die($conn->error);
+                                                while($data = $result->fetch_assoc()){
+                                                    $sql3 = "SELECT * FROM users WHERE usersId={$data['usersId']}";
+                                                    $result3 = $conn->query($sql3) or die($conn->error);
+                                                    while($data3 = $result3->fetch_assoc()){
+                                                        $num_length = strlen((string)$data3['phoneNumber']);
+                                                        if($num_length != 9 && $_SESSION["userid"] == $data3['usersId']){
+                                                            echo "<a class='phone_numb' href='profile.php'>Add a phone number</a>";
+                                                        }
+                                                        else if($_SESSION["userid"] != $data3['usersId'] && $num_length != 9){
+                                                            echo "<p class='phone_numb' style='cursor: default;'>No phone added</p>";
+                                                        }
+                                                        else{
+                                                            echo "<a class='phone_numb' href='tel:{$data3['phoneNumber']}'>{$data3['phoneNumber']}</a>";
+                                                        }
+                                                    }
+                                                }
+                                                mysqli_stmt_close($stmt);
+                                            ?>
                                             </div>
                                     </div>
                                     <div class="container_reviews">
-                                        `   <h3 class="title_reviews">52 reviews</h3>
+                                        <h3 class="title_reviews">52 reviews</h3>
                                         <div class="reviews">
                                             <img class="user_img" src="img/profile.png" alt="">
                                             <div class="account_review">
@@ -82,19 +192,58 @@
                                             <a  href="#" class="view_reviews">View all reviews</a>
                                             <a href='#' class="button Submit_review">Submit review</a>
                                         </div>
-                                        
-
                                     </div>
                             </div>
                         </div>
                             <div class="contacts">
                                 <div class="contacts_info">
-                                    
-                                    <p><strong>Seller:</strong> Vardas P.</p>
-                                    <p><strong>Location:</strong> Klaipėda</p>
-                                    <p><strong>Starting price:</strong> 15$</p>
-                                <p><strong>Delivery time:</strong> 1 day</p>
-                                <a class="phone_numb" href="tel:+37060000000" >+370 600 00000</a>
+                                            <?php
+                                                $s = $_GET['job'];
+                                                $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                                $stmt = mysqli_stmt_init($conn);
+                                                if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                                    header("location: jobs.php?error=stmtfailed");
+                                                    exit();
+                                                }
+                                                $result = $conn->query($sql) or die($conn->error);
+                                                while($data = $result->fetch_assoc()){
+                                                    $sql3 = "SELECT * FROM users WHERE usersId={$data['usersId']}";
+                                                    $result3 = $conn->query($sql3) or die($conn->error);
+                                                    while($data3 = $result3->fetch_assoc()){
+                                                        echo "<p><strong>Seller:</strong> {$data3['usersName']}</p>";
+                                                    }
+                                                    echo "<p><strong>Location:</strong> {$data['jobsLocation']}</p>";
+                                                    echo "<p><strong>Starting price:</strong> {$data['jobsPrice']}€</p>";
+                                                    echo "<p><strong>Jobs category:<br></strong> {$data['jobsCategory']}</p>";
+                                                }
+                                                mysqli_stmt_close($stmt);
+                                            ?>
+                                <?php
+                                    $s = $_GET['job'];
+                                    $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                    $stmt = mysqli_stmt_init($conn);
+                                    if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                        header("location: jobs.php?error=stmtfailed");
+                                        exit();
+                                    }
+                                    $result = $conn->query($sql) or die($conn->error);
+                                    while($data = $result->fetch_assoc()){
+                                        $sql3 = "SELECT * FROM users WHERE usersId={$data['usersId']}";
+                                        $result3 = $conn->query($sql3) or die($conn->error);
+                                        while($data3 = $result3->fetch_assoc()){
+                                            $num_length = strlen((string)$data3['phoneNumber']);
+                                            if($num_length != 9 && $_SESSION["userid"] == $data3['usersId']){
+                                                echo "<a class='phone_numb' href='profile.php'>Add a phone number</a>";
+                                            }
+                                            else if($_SESSION["userid"] != $data3['usersId'] && $num_length != 9){
+                                                echo "<p class='phone_numb' style='cursor: default;'>No phone added</p>";
+                                            }
+                                            else{
+                                                echo "<a class='phone_numb' href='tel:{$data3['phoneNumber']}'>{$data3['phoneNumber']}</a>";
+                                            }
+                                        }
+                                    }
+                                ?>
                             </div>
                         </div>
                         </div>
@@ -104,7 +253,84 @@
             </section>
            
 </main>
-<script src="js/src_change.js"></script>
+<script>
+    let img = document.querySelector("#main_img");
+    let btn1 = document.querySelector("#btn1");
+    let btn2 = document.querySelector("#btn2");
+    let btn3 = document.querySelector("#btn3");
+
+    btn1.addEventListener("click", () => {
+    img.src = "uploads/<?php $s = $_GET['job'];
+                                        $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $result = $conn->query($sql) or die($conn->error);
+                                        while($data = $result->fetch_assoc()){
+                                            $sql = "SELECT * FROM gallery WHERE jobsId={$data['jobsId']} AND galleryOrder=1 ";
+                                            $result2 = $conn->query($sql) or die($conn->error);
+                                            while($data2 = $result2->fetch_assoc()){
+                                                echo $data2['imageFullName'];
+                                            }
+                                        }
+                                        mysqli_stmt_close($stmt);?>";
+    });
+
+    btn2.addEventListener("click", () => {
+    img.src = "uploads/<?php $s = $_GET['job'];
+                                        $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $result = $conn->query($sql) or die($conn->error);
+                                        while($data = $result->fetch_assoc()){
+                                            $sql = "SELECT * FROM gallery WHERE jobsId={$data['jobsId']} AND galleryOrder=2 ";
+                                            $result2 = $conn->query($sql) or die($conn->error);
+                                            while($data2 = $result2->fetch_assoc()){
+                                                echo $data2['imageFullName'];
+                                            }
+                                        }
+                                        mysqli_stmt_close($stmt);?>";
+    });
+
+    btn3.addEventListener("click", () => {
+    img.src = "uploads/<?php $s = $_GET['job'];
+                                        $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $result = $conn->query($sql) or die($conn->error);
+                                        while($data = $result->fetch_assoc()){
+                                            $sql = "SELECT * FROM gallery WHERE jobsId={$data['jobsId']} AND galleryOrder=3 ";
+                                            $result2 = $conn->query($sql) or die($conn->error);
+                                            while($data2 = $result2->fetch_assoc()){
+                                                echo $data2['imageFullName'];
+                                            }
+                                        }
+                                        mysqli_stmt_close($stmt);?>";
+    });
+</script>
 
 <?php
     include_once 'footer.php';

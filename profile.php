@@ -89,6 +89,45 @@
                             else if($_GET["error"] == "emailnone"){
                                 echo '<p class=errormessagenone style="text-align: center; color: green;">E-Mail changed successfully!</p>';
                             }
+                            else if($_GET["error"] == "emptyinputs"){
+                                echo '<p class=errormessage style="text-align: center; color: red;">WHOOPS, looks like You did not change anything!</p>';
+                            }
+                            else if($_GET["error"] == "wrongusername"){
+                                echo '<p class=errormessage style="text-align: center; color: red;">Wrong name format, try using english letters only!</p>';
+                            }
+                            else if($_GET["error"] == "usernamealreadyused"){
+                                echo '<p class=errormessage style="text-align: center; color: red;">Name already in use!</p>';
+                            }
+                            else if($_GET["error"] == "usernone"){
+                                echo '<p class=errormessagenone style="text-align: center; color: green;">Name changed successfully!</p>';
+                            }
+                            else if($_GET["error"] == "invalidnumber"){
+                                echo '<p class=errormessage style="text-align: center; color: red;">Wrong phone number format!</p>';
+                            }
+                            else if($_GET["error"] == "numberalreadyused"){
+                                echo '<p class=errormessage style="text-align: center; color: red;">Phone number already in use!</p>';
+                            }
+                            else if($_GET["error"] == "tooshortnumber"){
+                                echo '<p class=errormessage style="text-align: center; color: red;">Phone number is too short!</p>';
+                            }
+                            else if($_GET["error"] == "toolongnumber"){
+                                echo '<p class=errormessage style="text-align: center; color: red;">Phone number is too long!</p>';
+                            }
+                            else if($_GET["error"] == "numbernone"){
+                                echo '<p class=errormessagenone style="text-align: center; color: green;">Phone number changed successfully!</p>';
+                            }
+                            else if($_GET["error"] == "invalidcountry"){
+                                echo '<p class=errormessage style="text-align: center; color: red;">Wrong country format!</p>';
+                            }
+                            else if($_GET["error"] == "countrynone"){
+                                echo '<p class=errormessagenone style="text-align: center; color: green;">Country changed successfully!</p>';
+                            }
+                            else if($_GET["error"] == "invalidcity"){
+                                echo '<p class=errormessage style="text-align: center; color: red;">Wrong city format!</p>';
+                            }
+                            else if($_GET["error"] == "citynone"){
+                                echo '<p class=errormessagenone style="text-align: center; color: green;">City changed successfully!</p>';
+                            }
                         }
                         ?>
                     </div>

@@ -361,3 +361,64 @@ function changeName($conn, $newName, $userId){
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 }
+
+function changeNumber($conn, $number, $userId){
+    $sql = "SELECT * FROM users WHERE phoneNumber = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../profile.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "i", $number);
+    mysqli_stmt_execute($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
+    if ($row = mysqli_fetch_assoc($resultData)) {
+        mysqli_stmt_close($stmt);
+        header("location: ../profile.php?error=numberalreadyused");
+        exit();
+    }
+    $num_length = strlen((string)$number);
+    if($num_length == 9) {
+        $sql = "UPDATE users SET phoneNumber = ? WHERE usersId = $userId";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../profile.php?error=stmtfailed");
+            exit();
+        }
+        mysqli_stmt_bind_param($stmt, "i", $number);
+        mysqli_stmt_execute($stmt);
+        mysqli_stmt_close($stmt);
+    }
+    else if($num_length > 9){
+        header("location: ../profile.php?error=toolongnumber");
+        exit();
+    }
+    else{
+        header("location: ../profile.php?error=toolshortnumber");
+        exit();
+    }
+}
+
+function changeCountry($conn, $country, $userId){
+    $sql = "UPDATE users SET country = ? WHERE usersId = $userId";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../profile.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $country );
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
+function changeCity($conn, $city, $userId){
+    $sql = "UPDATE users SET city = ? WHERE usersId = $userId";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../profile.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $city );
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}

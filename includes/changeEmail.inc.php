@@ -28,10 +28,44 @@ if (isset($_POST["submit"])) {
     }
     if (!empty($newName)){
         if(!preg_match("/^[a-zA-Z0-9]*$/", $newName)){
+            header("location: ../profile.php?error=wrongusername");
         }
         else{
             changeName($conn, $newName, $userId);
             header("location: ../profile.php?error=usernone");
+            exit();
+        }
+    }
+    if (!empty($number)){
+        if (!is_numeric($number)) {
+            header("location: ../profile.php?error=invalidnumber");
+            exit();
+        }
+        else{
+            changeNumber($conn, $number, $userId);
+            header("location: ../profile.php?error=numbernone");
+            exit();
+        }
+    }
+    if (!empty($country)){
+        if (is_numeric($country)) {
+            header("location: ../profile.php?error=invalidcountry");
+            exit();
+        }
+        else{
+            changeCountry($conn, $country, $userId);
+            header("location: ../profile.php?error=countrynone");
+            exit();
+        }
+    }
+    if (!empty($city)){
+        if (is_numeric($city)) {
+            header("location: ../profile.php?error=invalidcity");
+            exit();
+        }
+        else{
+            changeCity($conn, $city, $userId);
+            header("location: ../profile.php?error=citynone");
             exit();
         }
     }

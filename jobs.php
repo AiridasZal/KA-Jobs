@@ -40,7 +40,7 @@
                 $sql2 = "SELECT * FROM gallery WHERE jobsId={$data['jobsId']} AND galleryOrder=1";
                 $result2 = $conn->query($sql2) or die($conn->error);
                 echo "<div class='job'>
-                <a class='job_describtion' href='?job={$data['jobsId']}' target=_blank>
+                <a class='job_describtion' href='job_describe.php?job={$data['jobsId']}' target=_blank>
                 <div class='job_information'>
                     <div class='photo'>";
 
