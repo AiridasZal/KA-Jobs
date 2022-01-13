@@ -27,7 +27,7 @@
         <!--=============== HOME ===============-->
 		
          <section class="home section" id="home">
-                 <div style="margin-left: px; text-align: center;">
+                 <div style="margin-left: px; text-align: center;" class="content">
 					 <video autoplay muted play id="notfoundimg">
         					<source src="img/404error.mp4">
 							Sorry, your browser doesn't support embedded videos.
