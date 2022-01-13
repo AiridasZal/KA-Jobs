@@ -1,0 +1,124 @@
+.grid_coll_2 {
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  column-gap: 3rem;
+}
+
+.job_title {
+  font-size: 2 rem;
+}
+
+.job_describtion_profile {
+  justify-items: center;
+  margin-top: 3rem;
+}
+
+.contacts_info {
+  /* background-color: #999; */
+  justify-items: center;
+  padding: 1rem 2.5rem;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
+.phone_numb {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: var(--first-color);
+  padding: 6px;
+  border-radius: 12px;
+  color: black;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.photos {
+  text-align: center;
+}
+
+.img_gallery {
+  align-items: center;
+  justify-items: center;
+}
+
+.job_img_main {
+  height: 25rem;
+}
+
+.img_btn {
+  border: none;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.grid_3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.job_photo {
+  margin-bottom: 2rem;
+}
+
+.job_info {
+  margin-top: 5rem;
+}
+.describtion {
+  margin-bottom: 3rem;
+}
+.job_inform {
+  line-height: 1.7;
+}
+
+.user_img {
+  height: 3.4rem;
+  width: 3.4rem;
+}
+
+.yelow {
+  color: #ffb33e;
+  font-weight: 650;
+}
+
+.reviews {
+  display: flex;
+  margin-top: 2.4rem;
+  gap: 1.3rem;
+}
+
+.review_btn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  text-align: center;
+  align-items: center;
+}
+
+.view_reviews {
+  color: black;
+  font-weight: 600;
+}
+
+.contact_us {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .grid_coll_2 {
+    grid-template-columns: 1fr;
+  }
+  .contacts_info {
+    display: none;
+  }
+  .contact_us {
+    display: block;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+  }
+  .contact_us_info {
+    margin-bottom: 1.5rem;
+  }
+}

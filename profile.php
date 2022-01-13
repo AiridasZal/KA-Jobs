@@ -48,36 +48,28 @@
                     <div id="title"><h1>Profile settings<h1></div>
                     <div id="emailChange">
                         <form action="includes/changeEmail.inc.php" method="post">
-                            <div class="label_grid">
-
                                 <div class="form__div">
-                                    <input type="" class="form__input" name="newEmail" placeholder=" ">
+                                    <input type="text" class="form__input" name="newName" placeholder=" ">
                                     <label for="" class="form__label">Name</label>
                                 </div>
-                                <div class="form__div">
-                                    
-                                    <input type="" class="form__input" name="newEmail" placeholder=" ">
-                                    <label for="" class="form__label">Last name</label>
-                                </div>
-                            </div>
                             <div class="form__div">
-                                <input type="" class="form__input" name="newEmail" placeholder=" ">
+                                <input type="text" class="form__input" name="newEmail" placeholder=" ">
                                 <label for="" class="form__label">New Email</label>
                             </div>
                             <div class="form__div">
-                                <input type="" class="form__input" name="newEmail" placeholder=" ">
+                                <input type="text" class="form__input" name="number" placeholder=" ">
                                 <label for="" class="form__label">Phone number</label>
                             </div>
                             <div class="label_grid">
 
                             <div class="form__div ">
-                                    <input type="" class="form__input" name="newEmail" placeholder=" ">
+                                    <input type="text" class="form__input" name="country" placeholder=" ">
                                     <label for="" class="form__label">Country</label>
                                 </div>
 
                                 <div class="form__div">
                                     
-                                    <input type="" class="form__input" name="newEmail" placeholder=" ">
+                                    <input type="text" class="form__input" name="city" placeholder=" ">
                                     <label for="" class="form__label">City</label>
                                 </div>
                                 </div>
@@ -137,6 +129,6 @@
         </main>
 
 <?php
-    include_once 'footer.signup.php';
+    include_once 'footer.php';
     ?>
 

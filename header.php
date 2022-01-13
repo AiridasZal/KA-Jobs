@@ -12,12 +12,15 @@
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
         <!--=============== REMIX ICONS ===============-->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/add-job.css">
+        <link rel="stylesheet" href="css/jobs.css">
         <title>Jobly</title>
     </head>
     <body>

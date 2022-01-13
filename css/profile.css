@@ -21,3 +21,8 @@
 .spacing {
   margin-top: 1.5rem;
 }
+@media (max-width: 750px) {
+  .profile_container {
+    grid-template-columns: 1fr;
+  }
+}
