@@ -511,10 +511,22 @@ img {
   }
 }
 
+@media screen and (max-width: 480px) {
+  .job_subtitle_hidden{
+    display: none;
+  } 
+  .job_current{
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
 @media screen and (max-width: 400px) {
   .button__menu {
     padding: 0.75rem 28%;
   }
+  
 }
 
 @media screen and (max-width: 360px) {
@@ -526,7 +538,13 @@ img {
   }
 }
 
-/* For medium devices */
+@media screen and (min-width: 480px){
+  .job_subtitle_hidden_center{
+    display: none;
+  }
+}
+
+/* For medium devices */ 
 @media screen and (min-width: 576px) {
   .svg__img {
     width: 100%;
