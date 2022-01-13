@@ -11,7 +11,7 @@
   align-items: center;
   max-width: 968px;
   height: 80vh;
-  margin-top: var(--header-height);
+  margin-top: 5rem;
   margin-left: var(--mb-1-5);
   margin-right: var(--mb-1-5);
   row-gap: 3rem;
