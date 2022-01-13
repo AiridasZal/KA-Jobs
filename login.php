@@ -9,7 +9,7 @@
 
         <!--=============== SIGN IN SIDE ===============-->
         <main class="main">
-            <div class="l-form container">
+            <div class="l-form container content olfix">
                 <form action="includes/login.inc.php" method="post" class="form">
                     <a href="login.php" class="account__cselect active-link">Sign In</a>
                     <a href="signup.php" class="inactive__select account__cselect">Register</a>
@@ -40,5 +40,5 @@
             </div>
         </main>
 <?php
-    include_once 'footer.signup.php';
+    include_once 'footer.php';
 ?>

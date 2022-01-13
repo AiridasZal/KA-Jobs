@@ -435,6 +435,12 @@ img {
   bottom: 0;
 }
 
+/*============== Content align for Footer ==========*/
+
+.content {
+  min-height: calc(100vh - 3rem - 3.5rem);
+}
+
 /*=============== SCROLL UP ===============*/
 .scrollup {
   position: fixed;
