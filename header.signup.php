@@ -47,7 +47,7 @@
                             if (isset($_SESSION["useruid"])) {
                                 echo 
                                     "<li class='nav__item'>
-                                        <a href='profile.php#profile' class='nav__link active-link'>Profile page</a>
+                                        <a href='profile.php#profile' class='nav__link>Profile page</a>
                                     </li>";
                             }
                             else{

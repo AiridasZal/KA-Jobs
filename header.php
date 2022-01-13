@@ -29,7 +29,7 @@
                 <div class="nav__menu" id="nav-menu">
                         <ul class="nav__list">
                             <li class="nav__item">
-                                <a href="index.php#home" class="nav__link active-link">Home</a>
+                                <a href="index.php#home" class="nav__link">Home</a>
                             </li>
                             <li class="nav__item">
                                 <a href="index.php#about" class="nav__link">About us</a>
