@@ -42,11 +42,20 @@
                     ?>
                     <div id="title"><h1>Profile settings<h1></div>
                     <div id="passwordChange">
-                        <h1>Change password</h1>
+                        <h1 class="spacing">Change password</h1>
                         <form action="includes/changePWD.inc.php" method="post">
-                            <input type="password" name="newPassword" placeholder="New password" id="pass">
-                            <input type="password" name="repNewPwd" placeholder="Repeat new password" id="pass">
-                            <input type="submit" class="button" name="submit" value="Change" id="submit">
+
+                            <div class="form__div">
+                                <input type="password" class="form__input" name="newPassword" placeholder=" ">
+                                <label for="" class="form__label">Password</label>
+                            </div>
+
+                            <div class="form__div">
+                                <input type="password" class="form__input" name="repNewPwd" placeholder=" ">
+                                <label for="" class="form__label">New Password</label>
+                            </div>
+
+                            <input type="submit" class="button" name="submit" value="Change">
                         </form>
                         <?php
                         if (isset($_GET["error"])) {
@@ -62,11 +71,15 @@
                         }
                         ?>
                     </div>
+                    
                     <div id="emailChange">
-                        <h1>Change E-Mail</h1>
+                        <h1 class="spacing">Change E-Mail</h1>
                         <form action="includes/changeEmail.inc.php" method="post">
-                            <input type="text" name="newEmail" placeholder="New Email" id="email">
-                            <input type="submit" class="button" name="submit" value="Change" id="submit">
+                            <div class="form__div">
+                                <input type="password" class="form__input" name="newEmail" placeholder=" ">
+                                <label for="" class="form__label">New Email</label>
+                            </div>
+                            <input type="submit" class="button" name="submit" value="Change">
                         </form>
                         <?php
                         if (isset($_GET["error"])) {
