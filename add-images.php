@@ -14,7 +14,7 @@
     <div class="l-form container content">
         <form action="includes/add-images.inc.php" method="post" enctype="multipart/form-data" class="form" style="width: 700px;">
             <h1 class="form__title">Create a listing</h1>
-            <p class="form__description">General information     2/3</p>
+            <p class="form__description">General information     2/2</p>
             <div class="form-group text-center" style="position: relative;" >
                 <span class="img-div">
                     <div class="img-placeholder"  onClick="triggerClick()">
