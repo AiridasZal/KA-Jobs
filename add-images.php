@@ -30,19 +30,19 @@
                     <?php
                     if (isset($_GET["error"])) {
                         if ($_GET["error"] == "invalidtype") {
-                            echo '<p class=errormessage style="text-align: center;">Not supported file format!</p>';
+                            echo '<p class=errormessage style="text-align: center; color: red;">Not supported file format!</p>';
                         }
                         else if($_GET["error"] == "oops"){
-                            echo '<p class=errormessage style="text-align: center;">Something went wrong, try again!</p>';
+                            echo '<p class=errormessage style="text-align: center; color: red;">Something went wrong, try again!</p>';
                         }
                         else if($_GET["error"] == "size"){
-                            echo '<p class=errormessage style="text-align: center;">File size is too big!</p>';
+                            echo '<p class=errormessage style="text-align: center; color: red;">File size is too big!</p>';
                         }
                         else if($_GET["error"] == "none"){
-                            echo '<p class=errormessage style="text-align: center;">Image uploaded successfully, upload another image!</p>';
+                            echo '<p class=errormessage style="text-align: center; padding: 10px; margin-top: 50px; color: green;">Image uploaded successfully, upload another image!</p>';
                         }
                         else if($_GET["error"] == "stmtfailed"){
-                            echo '<p class=errormessage style="text-align: center;">Could not connect to the database</p>';
+                            echo '<p class=errormessage style="text-align: center; color: red;">Could not connect to the database</p>';
                         }
                     }
                     ?>

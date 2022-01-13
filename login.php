@@ -28,10 +28,10 @@
                     <?php
                     if (isset($_GET["error"])) {
                         if ($_GET["error"] == "emptyinput") {
-                            echo "<p class=errormessage>Fill in all fields!</p>";
+                            echo '<p class=errormessage style="text-align: center; color: red;">Fill in all fields!</p>';
                         }
                         else if($_GET["error"] == "wronglogin"){
-                            echo "<p class=errormessage>Incorrect login information!</p>";
+                            echo '<p class=errormessage style="text-align: center; color: red;">Incorrect login information!</p>';
                         }
                     }
                     ?>
