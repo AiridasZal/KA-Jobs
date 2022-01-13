@@ -297,9 +297,9 @@ function changePassword($conn, $newPwd, $userId){
     mysqli_stmt_close($stmt);
 }
 
-function emptyEmailChange($newEmail){
+function emptyfield($newEmail, $newName, $number, $country, $city){
     $result;
-    if (empty($newEmail)) {
+    if (empty($newEmail) && empty($newName) && empty($number) && empty($country) && empty($city)) {
         $result = true;
     }
     else{
@@ -331,6 +331,33 @@ function changeEmail($conn, $newEmail, $userId){
         exit();
     }
     mysqli_stmt_bind_param($stmt, "s", $newEmail);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
+function changeName($conn, $newName, $userId){
+    $sql = "SELECT * FROM users WHERE usersUid = ?";
+    $stmt = mysqli_stmt_init($conn);
+    if(!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../profile.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $newName);
+    mysqli_stmt_execute($stmt);
+    $resultData = mysqli_stmt_get_result($stmt);
+    if ($row = mysqli_fetch_assoc($resultData)) {
+        mysqli_stmt_close($stmt);
+        header("location: ../profile.php?error=usernamealreadyused");
+        exit();
+    }
+
+    $sql = "UPDATE users SET usersUid = ? WHERE usersId = $userId";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../profile.php?error=stmtfailed");
+        exit();
+    }
+    mysqli_stmt_bind_param($stmt, "s", $newName);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 }
