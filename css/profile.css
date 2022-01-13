@@ -1,115 +1,23 @@
-body{
-  overflow: hidden;
+.profile_container {
+  margin-top: 2rem;
 }
-.main{
-    overflow: hidden;
+
+.profile_container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 4rem;
 }
-#profile{
-  margin: auto;
-  width: 200px;
-  position: relative;
-  right: 450px;
-  transition: .3s;
-}
-#title{
-  margin: auto;
-  width: 500px;
-  position: relative;
-  left: 300px;
-  bottom: 300px;
+
+.user_information {
   text-align: center;
-  font-size: 30px;
 }
-#passwordChange{
-  margin: auto;
-  position: relative;
-  left: 300px;
-  width: 300px;
-  bottom: 250px;
-  text-align: center;
-  font-size: 20px;
-  padding-right: 1rem;
+
+.label_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 0.5rem;
 }
-#emailChange{
-  margin: auto;
-  position: relative;
-  left: 600px;
-  width: 300px;
-  bottom: 457px;
-  text-align: center;
-  font-size: 20px;
-}
-#pass{
-  border-radius: 10px;
-  text-indent: 5px;
-  left: 10px;
-  height: 25px;
-  width: 190px;
-  margin-top: 20px;
-}
-#email{
-  border-radius: 10px;
-  text-indent: 5px;
-  left: 10px;
-  height: 25px;
-  width: 190px;
-  margin-top: 20px;
-}
-#submit{
-  margin-top: 20px;
-  margin-bottom: 20px; 
-  padding: 5px;
-  width: 150px;
-}
-.errormessagenone{
-  font-size: 20px;
-}
-.errormessage{
-  font-size: 20px;
-}
-.spacing{
-  padding-bottom: 1rem;
-}
-@media (max-width: 1200px){
-	#profile{
-    right: 300px;
-    transition: .3s;
-	}
-}
-@media (max-width: 950px){
-	#profile{
-    right: 0px;
-    transition: .3s;
-	}
-  #title{
-    left: -145px;
-    font-size: 20px;
-    bottom: 350px;
-    transition: .3s;
-  }
-  #passwordChange{
-    left: -50px;
-    bottom: 15px;
-    transition: .3s;
-    font-size: 16px
-  }
-  #emailChange{
-    left: -50px;
-    bottom: 15px;
-    transition: .3s;
-    font-size: 16px
-  }
-  .errormessagenone{
-    font-size: 20px;
-  }
-  .errormessage{
-    font-size: 20px;
-  }
-  body{
-    overflow-y: visible;
-  }
-  .footer-account{
-    position: relative;
-    bottom: -0px;
-  }
+
+.spacing {
+  margin-top: 1.5rem;
 }
