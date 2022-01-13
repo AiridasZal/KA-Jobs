@@ -18,7 +18,6 @@
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/add-job.css">
-
         <title>Jobly</title>
     </head>
     <body>

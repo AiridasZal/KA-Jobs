@@ -11,64 +11,56 @@
             <div class="l-form container">
                 <form action="includes/add-job.inc.php" method="post" class="form" style="width: 700px;">
                     <h1 class="form__title">Create a listing</h1>
-                    <p class="form__description">General information 1/2</p>
+                    <p class="form__description">General information 1/3</p>
                     <div class="form__div">
-                            <input type="text" maxlength="80" class="form__input" name="title" placeholder=" " value="<?php if(isset($_SESSION["title"])) echo $_SESSION["title"];?>">
-                            <label for="" class="form__label">Title</label>
-                        </div>
-                    <div class="input__grid">
-                        <div class="input__div">
-                            <input type="text" class="form__input" name="location" placeholder=" " value="<?php if(isset($_SESSION["location"])) echo $_SESSION["location"];?>">
-                            <label for="" class="form__label">Location</label>
-                        </div>
-
-                        <div class="input__div2">
-                            <input type="text" class="form__input" name="price" placeholder=" " value="<?php if(isset($_SESSION["price"])) echo $_SESSION["price"];?>">
-                            <label for="" class="form__label">Price (€)</label>
-                        </div>
-
-                        <div class="input__div" style="margin-top: 73px;">
-                        <select name="category" class="form__input" style="height: 55px;" placeholder=" " value="<?php if(isset($_SESSION["category"])) echo $_SESSION["category"];?>">
-                                <option value="" disabled selected hidden>Select your option</option>
-                                <option value="gardening">Gardening</option>
-                                <option value="coding">Coding</option>
-                                <option value="cleaning">Cleaning</option>
-                            </select>
-                            <label for="" class="form__label">Category</label>
-                        </div>
-
-                        <div class="input__div2" style="margin-top: 73px;">
-                        <select name="subCategory" class="form__input" style="height: 55px;" placeholder=" " value="<?php if(isset($_SESSION["subcategory"])) echo $_SESSION["subcategory"];?>">
-                                <option value="" disabled selected hidden>Select your option</option>
-                                <option value="gardening">Gardening</option>
-                                <option value="coding">Coding</option>
-                                <option value="cleaning">Cleaning</option>
-                            </select>
-                            <label for="" class="form__label">SubCategory</label>
-                        </div>
+                        <input type="text" maxlength="20" class="form__input" name="title" placeholder=" " value="<?php if(isset($_SESSION["title"])) echo $_SESSION["title"];?>">
+                        <label for="" class="form__label">Title</label>
                     </div>
 
                     <div class="form__div">
-                        <textarea name="desc" class="form__input" style="resize: none; border-radius: 4px; height: 150px;" placeholder=" "><?php if(isset($_SESSION["desc"])) echo $_SESSION["desc"];?></textarea>
+                        <input type="text" class="form__input" name="location" placeholder=" " value="<?php if(isset($_SESSION["location"])) echo $_SESSION["location"];?>">
+                        <label for="" class="form__label">Location</label>
+                    </div>
+
+                    <div class="form__div">
+                        <input type="text" class="form__input" name="price" placeholder=" " value="<?php if(isset($_SESSION["price"])) echo $_SESSION["price"];?>">
+                        <label for="" class="form__label">Price (€)</label>
+                    </div>
+
+                    <div class="form__div">
+                        <input type="text" class="form__input" name="category" placeholder=" " value="<?php if(isset($_SESSION["category"])) echo $_SESSION["category"];?>">
+                        <label for="" class="form__label">Category</label>
+                    </div>
+
+                    <div class="form__div">
+                        <input type="text" class="form__input" name="subCategory" placeholder=" " value="<?php if(isset($_SESSION["subcategory"])) echo $_SESSION["subcategory"];?>">
+                        <label for="" class="form__label">SubCategory</label>
+                    </div>
+
+                    <div class="form__div">
+                        <textarea name="desc" class="form__input" style="resize: none; border-radius: 4px;" placeholder=" "><?php if(isset($_SESSION["desc"])) echo $_SESSION["desc"];?></textarea>
                         <label for="" class="form__label">Description</label>
                     </div>
 
-                    <input type="submit" class="button" style="margin-top: 100px; width: 100px; float: right;" name="submit" value="Next">
-                    <input type="button" class="button" style="margin-top: 100px; width: 100px; float: left;" name="cancel" value="Cancel" id="atsaukti">
+                    <input type="submit" class="button" style="width: 100px; float: right;" name="submit" value="Next">
+                    <input type="button" class="button" style="width: 100px; float: left;" name="cancel" value="Cancel" id="atsaukti">
 
                     <?php
                     if (isset($_GET["error"])) {
                         if ($_GET["error"] == "emptyinput") {
-                            echo '<p class=errormessage style="text-align: center;">Fill in all fields!</p>';
+                            echo '<p class=errormessage style="text-align: center; color: red;">Fill in all fields!</p>';
                         }
                         else if($_GET["error"] == "invalidprice"){
-                            echo '<p class=errormessage style="text-align: center;">Wrong price format!</p>';
+                            echo '<p class=errormessage style="text-align: center; color: red;">Wrong price format!</p>';
                         }
                         else if($_GET["error"] == "titleshort"){
-                            echo '<p class=errormessage style="text-align: center;">The title is too short!</p>';
+                            echo '<p class=errormessage style="text-align: center; color: red;">The title is too short!</p>';
                         }
                         else if($_GET["error"] == "descshort"){
-                            echo '<p class=errormessage style="text-align: center;">Description is too short!</p>';
+                            echo '<p class=errormessage style="text-align: center; color: red;">Description is too short!</p>';
+                        }
+                        else if($_GET["error"] == "stmtfailed"){
+                            echo '<p class=errormessage style="text-align: center; color: red;">Could not connect to the database</p>';
                         }
                     }
                     ?>
