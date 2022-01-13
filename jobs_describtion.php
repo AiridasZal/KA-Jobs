@@ -5,17 +5,7 @@
     require_once 'includes/dbh.inc.php';
     require_once 'includes/functions.inc.php';
 ?>
-    <style>
-        img{
-            width: 200px;
-            height: 200px;
-        }
-    </style>
-    <!--=============== CSS ===============-->
-    <link rel="stylesheet" href="css/findjob.css">
 
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 <!-- Job section -->
     <?php
@@ -71,7 +61,7 @@
                                     }
                                 echo "
                                 <div class='rating_container'>
-                                    <p class='rating'><ion-icon class='star' name='star-outline'></ion-icon> <strong>5.0 </strong></p>
+                                    <p class='rating'><ion-icon class='star' name='star'></ion-icon> <strong>5.0 </strong></p>
                                     <p class='rating_number'>(459)</p>
                                 </div>
                             </div>

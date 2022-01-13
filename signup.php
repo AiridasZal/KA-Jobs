@@ -8,7 +8,7 @@
 ?>
         <!--=============== SIGN IN SIDE ===============-->
         <main class="main">
-            <div class="l-form container">
+            <div class="l-form container content olfix">
                 <form action="includes/signup.inc.php" method="post" class="form">
                     <a href="login.php" class="inactive__select account__cselect">Sign In</a>
                     <a href="signup.php" class="account__cselect active-link">Register</a>
@@ -42,25 +42,25 @@
                     <?php
                 if (isset($_GET["error"])) {
                     if ($_GET["error"] == "emptyinput") {
-                        echo "<p class=errormessage>Fill in all fields!</p>";
+                        echo '<p class=errormessage style="text-align: center; color: red;">Fill in all fields!</p>';
                     }
                     else if($_GET["error"] == "invalidUid"){
-                        echo "<p class=errormessage>Choose a proper username</p>";
+                        echo '<p class=errormessage style="text-align: center; color: red;">Choose a proper username</p>';
                     }
                     else if($_GET["error"] == "invalidemail"){
-                        echo "<p class=errormessage>Choose a proper email</p>";
+                        echo '<p class=errormessage style="text-align: center; color: red;">Choose a proper email</p>';
                     }
                     else if($_GET["error"] == "passwordsdontmatch"){
-                        echo "<p class=errormessage>Passwords doesn't match!</p>";
+                        echo '<p class=errormessage style="text-align: center; color: red;">Passwords do not match!</p>';
                     }
                     else if($_GET["error"] == "stmtfailed"){
-                        echo "<p class=errormessage>Something went wrong!</p>";
+                        echo '<p class=errormessage style="text-align: center; color: red;">Something went wrong!</p>';
                     }
                     else if($_GET["error"] == "usernametaken"){
-                        echo "<p class=errormessage>Username already taken!</p>";
+                        echo '<p class=errormessage style="text-align: center; color: red;">Username already taken!</p>';
                     }
                     else if($_GET["error"] == "none"){
-                        echo "<p class=errormessagenone>You have signed up!</p>";
+                        echo '<p class=errormessagenone style="text-align: center; color: green;">You have signed up!</p>';
                     }
                 }       
                 ?>
@@ -69,5 +69,5 @@
             </div>
         </main>
 <?php
-    include_once 'footer.signup.php';
+    include_once 'footer.php';
 ?>

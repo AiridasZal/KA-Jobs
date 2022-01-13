@@ -12,15 +12,13 @@
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
         <!--=============== REMIX ICONS ===============-->
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 
         <!--=============== CSS ===============-->
         <link rel="stylesheet" href="css/login.css">
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/add-job.css">
-        <link rel="stylesheet" href="css/jobs.css">
+
         <title>Jobly</title>
     </head>
     <body>
@@ -82,3 +80,36 @@
                 ?>
             </nav>
         </header>
+
+<main class="main">
+    <div class="l-form container content">
+        <form method="post" class="job-form">
+            <h2 class="job-title">Create a listing</h2>
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            <ul class="info_list">
+                <li>
+                    <div class="job_subtitle_hidden">General Information</div>
+                </li>
+                <li>
+                    <div class="job_current job_subtitle_hidden_center">Additional information</div>
+                </li>
+                <li>
+                    <div class="job_current job_subtitle_hidden">Additional information</div>
+                </li>
+            </ul>
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+            <div class="upload-items-center">
+            <img src="img/uploadarrow.svg" alt="Upload 1 to 3 photos describing your job." class="upload-arrow">
+            <h2>Upload photos</h2>
+            <p>Select 1-3 photos</p>
+            <a href=""class="button" >Select photos</a>
+            </div>
+            
+            <a href="" class="button back-button"> Back</a>
+        </form>
+    </div>
+</main>
+
+<?php
+    include_once 'footer.php';
+?>

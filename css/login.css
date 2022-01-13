@@ -6,22 +6,41 @@
 }
 /*===== FORM =====*/
 .l-form{
+  position: relative;
+  min-height:100%;
   display: flex;
   justify-content: center;
   align-items: center;
   max-width: 968px;
-  height: 90vh;
-  margin-top: var(--header-height);
+  margin-top: 5rem;
   margin-left: var(--mb-1-5);
   margin-right: var(--mb-1-5);
   row-gap: 3rem;
+}
+.l-form2{
+  position: relative;
+  min-height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 968px;
+  margin-top: 100px;
+  margin-left: var(--mb-1-5);
+  margin-right: var(--mb-1-5);
+  row-gap: 3rem;
+  margin-bottom:100px; 
 }
 .l-grid{
   grid-column-gap: 1.5rem;
 }
 .form{
   width: 360px;
-  height: 670px;
+  padding: 2rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(92,99,105,.2);
+}
+.form2{
+  width: 360px;
   padding: 2rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 10px 25px rgba(92,99,105,.2);
@@ -31,14 +50,10 @@
   margin-bottom: 1.5rem;
   padding-top: 1.5rem;
 }
-.form__title2{
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-  padding-top: 1rem;
-}
 .form__description{
     margin-bottom: var(--mb-2);
 }
+
 .input__div{
   grid-area: main;
   position: relative;
@@ -51,13 +66,12 @@
   height: 48px;
   margin-bottom: 1.5rem;
 }
+
 .input__grid{
   display: grid;
   grid-template-columns: 313px 10px 313px;
-  grid-template-rows: auto;
   grid-template-areas:
     "main . other"
-    "main . other";
 }
 
 .form__div{
@@ -65,14 +79,12 @@
   height: 48px;
   margin-bottom: 1.5rem;
 }
-
 .form__input{
   position: absolute;
-  display: block;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 55px;
   font-size: var(--normal-font-size);
   border: 1px solid var(--border-color);
   border-radius: .5rem;
@@ -99,7 +111,19 @@ input[type="submit" i] {
     font-weight: var(--font-bold);
     cursor: pointer;
 }
+@media screen and (max-height: 850px) { 
+  .olfix{
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+  }
+}
 
+@media screen and (max-height: 767px) { 
+  .olfix{
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+  }
+}
 
 /*Input focus move up label*/
 .form__input:focus + .form__label{
@@ -141,15 +165,3 @@ input[type="submit" i] {
   .account__cselect:hover{
     color: var(--first-color);
   }
-  .footer-account {
-      position: absolute;
-      bottom: 0px;
-      width: 100vw;
-      vertical-align: middle;
-      text-align: center;
-      font-size: var(--smaller-font-size);
-      font-weight: var(--font-semi-bold);
-      color: var(--text-color);
-      background-color: var(--first-color-lighten);
-      padding: 0.5rem 0 0.5rem;
-    }

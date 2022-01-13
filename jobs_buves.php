@@ -230,15 +230,15 @@
              </div>
              
             </section>
-            <footer class="footer">
-                <p>&#169; Jobly 2021 <br> All rights reserved.</p>
-            </footer>
+            <?php
+                include_once "footer.php";
+            ?>
              <!--=============== SCROLL UP ===============-->
         <a href="#" class="scrollup" id="scroll-up">
             <i class='bx bx-up-arrow-alt scrollup__icon'></i>
         </a>
         
         <!--=============== MAIN JS ===============-->
-        <script src="assets/js/main.js"></script>
+        <script src="js/main.js"></script>
     </body>
     </html>

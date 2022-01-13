@@ -9,7 +9,7 @@
 
         <!--=============== SIGN IN SIDE ===============-->
         <main class="main">
-            <div class="l-form container">
+            <div class="l-form container content olfix">
                 <form action="includes/login.inc.php" method="post" class="form">
                     <a href="login.php" class="account__cselect active-link">Sign In</a>
                     <a href="signup.php" class="inactive__select account__cselect">Register</a>
@@ -28,10 +28,10 @@
                     <?php
                     if (isset($_GET["error"])) {
                         if ($_GET["error"] == "emptyinput") {
-                            echo "<p class=errormessage>Fill in all fields!</p>";
+                            echo '<p class=errormessage style="text-align: center; color: red;">Fill in all fields!</p>';
                         }
                         else if($_GET["error"] == "wronglogin"){
-                            echo "<p class=errormessage>Incorrect login information!</p>";
+                            echo '<p class=errormessage style="text-align: center; color: red;">Incorrect login information!</p>';
                         }
                     }
                     ?>
@@ -40,5 +40,5 @@
             </div>
         </main>
 <?php
-    include_once 'footer.signup.php';
+    include_once 'footer.php';
 ?>
