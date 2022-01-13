@@ -231,7 +231,7 @@
              
             </section>
             <?php
-                include_once "footer.signup.php";
+                include_once "footer.php";
             ?>
              <!--=============== SCROLL UP ===============-->
         <a href="#" class="scrollup" id="scroll-up">

@@ -11,7 +11,7 @@
   align-items: center;
   max-width: 968px;
   height: 80vh;
-  margin-top: 5rem;
+  margin-top: var(--header-height);
   margin-left: var(--mb-1-5);
   margin-right: var(--mb-1-5);
   row-gap: 3rem;
@@ -114,15 +114,16 @@ input[type="submit" i] {
     color: var(--first-color);
   }
 
-.footer-account {
-	position: absolute;
-    bottom: 0px;
-    width: 100vw;
-    vertical-align: middle;
-    text-align: center;
-    font-size: var(--smaller-font-size);
-    font-weight: var(--font-semi-bold);
-    color: var(--text-color);
-    background-color: var(--first-color-lighten);
-    padding: 0.5rem 0 0.5rem;
-} 
+  @media screen and (max-height: 850px) { 
+    .olfix{
+      margin-top: 5rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  @media screen and (max-height: 767px) { 
+    .olfix{
+      margin-top: 6rem;
+      margin-bottom: 2rem;
+    }
+  }

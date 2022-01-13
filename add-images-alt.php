@@ -82,7 +82,7 @@
         </header>
 
 <main class="main">
-    <div class="l-form container">
+    <div class="l-form container content">
         <form method="post" class="job-form">
             <h2 class="job-title">Create a listing</h2>
             <hr style="height:2px;border-width:0;color:gray;background-color:gray">
@@ -111,5 +111,5 @@
 </main>
 
 <?php
-    include_once 'footer.signup.php';
+    include_once 'footer.php';
 ?>

@@ -11,7 +11,7 @@
 ?>
   <link rel="stylesheet" href="css/main.css">
 <main class="main">
-    <div class="l-form container">
+    <div class="l-form container content">
         <form action="includes/add-images.inc.php" method="post" enctype="multipart/form-data" class="form" style="width: 700px;">
             <h1 class="form__title">Create a listing</h1>
             <p class="form__description">General information     2/3</p>
@@ -85,5 +85,5 @@
         </script>
 
 <?php
-    include_once 'footer.signup.php';
+    include_once 'footer.php';
 ?>

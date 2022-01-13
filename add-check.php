@@ -74,5 +74,5 @@
         </script>
 
 <?php
-    include_once 'footer.signup.php';
+    include_once 'footer.php';
 ?>
