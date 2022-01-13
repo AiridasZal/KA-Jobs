@@ -32,7 +32,7 @@
                                     </div>
                                 </div>
                                     <div class="job_info">
-                                        <h2 class="describtion">Description</h2>
+                                        <h2 class="describtion">Describtion</h2>
                                         <p class="job_inform">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel, repudiandae at iusto beatae id laudantium ratione vitae libero! Eveniet laboriosam officia esse sunt nobis exercitationem, maxime quod minima cum ipsum! Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste dignissimos itaque hic iusto est? Voluptatem, sit reprehenderit? Nihil magni repellendus incidunt quos aperiam commodi nesciunt quibusdam nulla, asperiores deserunt necessitatibus!locale_filter_matches Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam quod at dolorem quia voluptatum nulla assumenda veritatis fuga, aspernatur veniam, ullam eum modi corrupti velit nostrum accusamus dignissimos illum quibusdam!</p>
                                     </div>
                                     <div class="contact_us">
