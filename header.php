@@ -8,6 +8,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Employ a variety of specialists to complete various tasks or create your own job oppurtunities.">
+
+        <link rel="shortcut icon" type="image/png" href="img/searchjob.png"/>
         <!--=============== BOXICONS ===============-->
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
