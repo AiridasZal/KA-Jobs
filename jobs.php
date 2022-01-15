@@ -71,8 +71,30 @@
                                     }
                                 echo "
                                 <div class='rating_container'>
-                                    <p class='rating'><ion-icon class='star' name='star-outline'></ion-icon> <strong>5.0 </strong></p>
-                                    <p class='rating_number'>(459)</p>
+                                    <p class='rating'><ion-icon class='star' name='star-outline'></ion-icon>
+                                        <strong>";
+                                            $sql4 = "SELECT * FROM comments WHERE selected_user_id={$data['usersId']}";
+                                            $result4 = $conn->query($sql4) or die($conn->error);
+                                            $sum = 0;
+
+                                            $sql5 = "SELECT * FROM comments WHERE selected_user_id={$data['usersId']};";
+                                            $result5 = $conn->query($sql5);
+                                            if ($result5 = mysqli_query($conn, $sql5)) {
+                                                // Return the number of rows in result set
+                                                $rowcount = mysqli_num_rows( $result5);
+                                            }
+
+                                            while($data4 = $result4->fetch_assoc()){
+                                                    $sum += $data4['rating'];
+                                                }
+                                                $average = $sum / $rowcount;
+                                                echo number_format($average, 1);
+                                        echo "</strong>
+                                    </p>
+                                    <p class='rating_number'>";
+                                    echo "(".$rowcount.")";
+
+                                    echo "</p>
                                 </div>
                             </div>
                         </div>
@@ -81,38 +103,6 @@
             </div>";
             }
             mysqli_stmt_close($stmt);
-        }
-        else{
-            $s = $_GET['job'];
-            echo "<main class='main'>
-                <section class='home section' id='home'>
-                    <div style='margin-left: px; text-align: center;'>";
-                            $sql = "SELECT * FROM jobs WHERE jobsId=$s";
-                            $stmt = mysqli_stmt_init($conn);
-                            if (!mysqli_stmt_prepare($stmt, $sql)) {
-                                header("location: jobs.php?error=stmtfailed");
-                                exit();
-                            }
-                            $stmt = mysqli_stmt_init($conn);
-                            if (!mysqli_stmt_prepare($stmt, $sql)) {
-                                header("location: jobs.php?error=stmtfailed");
-                                exit();
-                            }
-                            $result = $conn->query($sql) or die($conn->error);
-                            while($data = $result->fetch_assoc()){
-                                echo "<h2>{$data['jobsTitle']}</h2>";
-                                echo "<h2>{$data['jobsLocation']}</h2>";
-                                echo "<h2>{$data['jobsPrice']}</h2>";
-                                echo "<h2>{$data['jobsCategory']}</h2>";
-                                echo "<h2>{$data['jobsSubCategory']}</h2>";
-                                echo "<h1>{$data['jobsDesc']}</h1>";
-                                $sql = "SELECT * FROM gallery WHERE jobsId={$data['jobsId']}";
-                                $result2 = $conn->query($sql) or die($conn->error);
-                                while($data2 = $result2->fetch_assoc()){
-                                    echo "<img src=uploads/{$data2['imageFullName']} >";
-                                }
-                            }
-                            mysqli_stmt_close($stmt);
         }
                         ?>
                     </div>

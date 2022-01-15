@@ -267,7 +267,7 @@ function uploadImage($conn, $title, $location, $price, $category, $subcategory, 
         unset($_SESSION["location"]);
         unset($_SESSION["price"]);
         unset($_SESSION["category"]);
-        unset($_SESSION["subcategory"]);
+        unset($_SESSION["subCategory"]);
         unset($_SESSION["desc"]);
         header("location: ../index.php");
         exit();
@@ -277,7 +277,7 @@ function uploadImage($conn, $title, $location, $price, $category, $subcategory, 
         unset($_SESSION["location"]);
         unset($_SESSION["price"]);
         unset($_SESSION["category"]);
-        unset($_SESSION["subcategory"]);
+        unset($_SESSION["subCategory"]);
         unset($_SESSION["desc"]);
         header("location: ../index.php");
         exit();
@@ -288,7 +288,7 @@ function changePassword($conn, $newPwd, $userId){
     $sql = "UPDATE users SET usersPwd = ? WHERE usersId = $userId";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../profiles.php?error=stmtfailed");
+        header("location: ../profile.php?error=stmtfailed");
         exit();
     }
     $hashedPwd = password_hash($newPwd, PASSWORD_DEFAULT);
@@ -420,5 +420,38 @@ function changeCity($conn, $city, $userId){
     }
     mysqli_stmt_bind_param($stmt, "s", $city );
     mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+}
+
+function saveComment($conn, $rating, $comment, $editor_id, $selected, $s){
+    $sql = "INSERT INTO comments (rating, comment, editor_id, selected_user_id) VALUES (?,?,?,?);";
+    $stmt = mysqli_stmt_init($conn);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../comments.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_bind_param($stmt, "ssss", $rating, $comment, $editor_id, $selected);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_close($stmt);
+    header("location: ../job_describe.php?job=$s");
+    exit();
+}
+
+function getAllComments($conn){
+    $sql = "SELECT * FROM comments;";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: ../comments.php?error=stmtfailed");
+        exit();
+    }
+
+    mysqli_stmt_execute($stmt);
+
+    $comments = mysqli_stmt_get_result($stmt);
+
+    return $comments;
+
     mysqli_stmt_close($stmt);
 }

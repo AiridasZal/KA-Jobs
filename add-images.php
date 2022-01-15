@@ -10,6 +10,7 @@
     include_once 'header.php';
 ?>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/add-images.css">
 <main class="main">
     <div class="l-form container content">
         <form action="includes/add-images.inc.php" method="post" enctype="multipart/form-data" class="form" style="width: 700px;">
@@ -61,7 +62,7 @@
                         }
                     }
                     </script>
-                    
+                    </div>
                 <!-- MODAL SECTION -->
                 <div class="bg-modal">
                     <div class="modal-content">

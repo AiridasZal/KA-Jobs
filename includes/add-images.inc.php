@@ -25,8 +25,8 @@ if (isset($_POST["submit"])) {
                 $stop = false;
                 $fileNameNew = uniqid('', true).".".$fileActualExt;
                 $fileDestination = "../uploads/".$fileNameNew;
-                createJobList($conn, $_SESSION["title"], $_SESSION["location"], $_SESSION["price"], $_SESSION["category"], $_SESSION["subcategory"], $_SESSION["desc"]);
-                uploadImage($conn, $_SESSION["title"], $_SESSION["location"], $_SESSION["price"], $_SESSION["category"], $_SESSION["subcategory"], $_SESSION["desc"], $fileNameNew, $fileTmpName, $fileDestination);
+                createJobList($conn, $_SESSION["title"], $_SESSION["location"], $_SESSION["price"], $_SESSION["category"], $_SESSION["subCategory"], $_SESSION["desc"]);
+                uploadImage($conn, $_SESSION["title"], $_SESSION["location"], $_SESSION["price"], $_SESSION["category"], $_SESSION["subCategory"], $_SESSION["desc"], $fileNameNew, $fileTmpName, $fileDestination);
             }
             else{
                 header("location: ../add-images.php?error=size");

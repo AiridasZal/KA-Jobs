@@ -12,17 +12,6 @@
     display: none;
     color: black;
   }
-  @media(max-width: 800px){
-    .bg-modal{
-      height: 145vh;
-    }
-  }
-  @media(max-height: 700px), (max-width: 800px){
-    .bg-modal{
-      height: 210vh;
-
-    }
-  }
   .modal-content{
     width: 500px;
     height: 300px;

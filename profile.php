@@ -57,7 +57,7 @@
                                 <label for="" class="form__label">New Email</label>
                             </div>
                             <div class="form__div">
-                                <input type="text" class="form__input" name="number" placeholder=" ">
+                                <input type="text" class="form__input" name="number" maxlength="9" placeholder=" ">
                                 <label for="" class="form__label">Phone number</label>
                             </div>
                             <div class="label_grid">

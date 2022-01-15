@@ -19,13 +19,13 @@
             
             <div class="input__grid">
                 <div class="input__div">
-                    <select name="location" class="form__input" placeholder=" " value="<?php if(isset($_SESSION["location"])) echo $_SESSION["location"];?>">
-                    <option value="" disabled selected hidden>Select your option</option>
-                        <option value="Vilnius">Vilnius</option>
-                        <option value="Kaunas">Kaunas</option>
-                        <option value="Klaipėda">Klaipėda</option>
-                        <option value="Panevėžys">Panevėžys</option>
-                        <option value="Šiauliai">Šiauliai</option>
+                    <select class="form__input" placeholder=" " name="location">
+                    <option value="" disabled selected  hidden>Select your option</option>
+                        <option value="Vilnius" <?php if(isset($_SESSION["location"]) && $_SESSION["location"] == 'Vilnius') echo "selected";?>>Vilnius</option>
+                        <option value="Kaunas" <?php if(isset($_SESSION["location"]) && $_SESSION["location"] == 'Kaunas') echo "selected";?>>Kaunas</option>
+                        <option value="Klaipėda" <?php if(isset($_SESSION["location"]) && $_SESSION["location"] == 'Klaipėda') echo "selected";?>>Klaipėda</option>
+                        <option value="Panevėžys" <?php if(isset($_SESSION["location"]) && $_SESSION["location"] == 'Panevėžys') echo "selected";?>>Panevėžys</option>
+                        <option value="Šiauliai" <?php if(isset($_SESSION["location"]) && $_SESSION["location"] == 'Šiauliai') echo "selected";?>>Šiauliai</option>
                     </select>
                     <label for="" class="form__label">Location</label>
                 </div>
@@ -37,21 +37,21 @@
             </div>
             <div class="input__grid">
                 <div class="input__div">
-                    <select name="category" class="form__input" placeholder=" " value="<?php if(isset($_SESSION["category"])) echo $_SESSION["category"];?>">
+                    <select name="category" class="form__input" placeholder=" ">
                         <option value="" disabled selected hidden>Select your option</option>
-                        <option value="gardening">Gardening</option>
-                        <option value="coding">Coding</option>
-                        <option value="cleaning">Cleaning</option>
+                        <option value="gardening" <?php if(isset($_SESSION["category"]) && $_SESSION["category"] == 'gardening') echo "selected";?>>Gardening</option>
+                        <option value="coding" <?php if(isset($_SESSION["category"]) && $_SESSION["category"] == 'coding') echo "selected";?>>Coding</option>
+                        <option value="cleaning" <?php if(isset($_SESSION["category"]) && $_SESSION["category"] == 'cleaning') echo "selected";?>>Cleaning</option>
                     </select>
                     <label for="" class="form__label">Category</label>
                 </div>
 
                 <div class="input__div2">
-                    <select name="subCategory" class="form__input" placeholder=" " value="<?php if(isset($_SESSION["subcategory"])) echo $_SESSION["subcategory"];?>">
+                    <select name="subCategory" class="form__input" placeholder=" ">
                         <option value="" disabled selected hidden>Select your option</option>
-                        <option value="gardening">Gardening</option>
-                        <option value="coding">Coding</option>
-                        <option value="cleaning">Cleaning</option>
+                        <option value="gardening" <?php if(isset($_SESSION["subCategory"]) && $_SESSION["subCategory"] == 'gardening') echo "selected";?>>Gardening</option>
+                        <option value="coding" <?php if(isset($_SESSION["subCategory"]) && $_SESSION["subCategory"] == 'coding') echo "selected";?>>Coding</option>
+                        <option value="cleaning" <?php if(isset($_SESSION["subCategory"]) && $_SESSION["subCategory"] == 'cleaning') echo "selected";?>>Cleaning</option>
                     </select>
                     <label for="" class="form__label">SubCategory</label>
                 </div>
@@ -68,20 +68,21 @@
             <?php
             if (isset($_GET["error"])) {
                 if ($_GET["error"] == "emptyinput") {
-                    echo '<p class=errormessage style="margin-top: 130px; text-align: center;">Fill in all fields!</p>';
+                    echo '<p class=errormessage style="margin-top: 130px; text-align: center; color: red;">Fill in all fields!</p>';
                 }
                 else if($_GET["error"] == "invalidprice"){
-                    echo '<p class=errormessage style="margin-top: 130px; text-align: center;">Wrong price format!</p>';
+                    echo '<p class=errormessage style="margin-top: 130px; text-align: center; color: red;">Wrong price format!</p>';
                 }
                 else if($_GET["error"] == "titleshort"){
-                    echo '<p class=errormessage style="margin-top: 130px; text-align: center;">The title is too short!</p>';
+                    echo '<p class=errormessage style="margin-top: 130px; text-align: center; color: red;">The title is too short!</p>';
                 }
                 else if($_GET["error"] == "descshort"){
-                    echo '<p class=errormessage style="margin-top: 130px; text-align: center;">Description is too short!</p>';
+                    echo '<p class=errormessage style="margin-top: 130px; text-align: center; color: red;">Description is too short!</p>';
                 }
             }
             ?>
             </form>
+        </div>
             
         <!-- MODAL SECTION -->
         
@@ -96,12 +97,12 @@
                         unset($_SESSION["location"]);
                         unset($_SESSION["price"]);
                         unset($_SESSION["category"]);
-                        unset($_SESSION["subcategory"]);
+                        unset($_SESSION["subCategory"]);
                         unset($_SESSION["desc"]);
                     ?>
             </div>
         </div>    
-    </div>          
+  
 </main>
 
 <script>

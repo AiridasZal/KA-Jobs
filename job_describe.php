@@ -3,7 +3,35 @@
     session_start();
     include_once 'header.php';
     require_once 'includes/dbh.inc.php';
-    require_once 'includes/functions.inc.php';
+
+    function getAllComments($conn, $commentid){
+        $s = $_GET['job'];
+        $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: jobs.php?error=stmtfailed");
+            exit();
+        }
+        $result = $conn->query($sql) or die($conn->error);
+        while($data = $result->fetch_assoc()){
+            $userid = $data['usersId'];
+        }
+
+        $sql = "SELECT * FROM `comments` AS `c` INNER JOIN `users` AS `u` ON `u`.`usersId` = `c`.`editor_id` WHERE selected_user_id=$userid AND id=$commentid ORDER BY id ASC;";
+        $stmt = mysqli_stmt_init($conn);
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("location: ../comments_display.php?error=stmtfailed");
+            exit();
+        }
+    
+        mysqli_stmt_execute($stmt);
+    
+        $comments = mysqli_stmt_get_result($stmt);
+    
+        return $comments;
+    
+        mysqli_stmt_close($stmt);
+    }
 ?>
 <main class="main">
         <!--=============== HOME ===============-->
@@ -52,7 +80,6 @@
                                             }
                                         }
                                         mysqli_stmt_close($stmt);?>
-
                                     
                                     <div class="img_gallery grid_3">
                                         
@@ -155,42 +182,111 @@
                                             ?>
                                             </div>
                                     </div>
-                                    <div class="container_reviews">
-                                        <h3 class="title_reviews">52 reviews</h3>
-                                        <div class="reviews">
-                                            <img class="user_img" src="img/profile.png" alt="">
-                                            <div class="account_review">
-                                                <p><strong>Username</strong></p>
-                                                <p class="yelow"><ion-icon class="yelow" name='star'></ion-icon> 5.0 </p>
-                                                <p>
-                                                    Very nice review!
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="reviews">
-                                            <img  class="user_img" src="img/profile.png" alt="">
-                                            <div class="account_review">
-                                                <p><strong>Username</strong></p>
-                                                <p class="yelow"><ion-icon class="yelow" name='star'></ion-icon> 4.0 </p>
-                                                <p>
-                                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid animi maiores quidem enim ea magni et nihil ratione!
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="reviews">
-                                            <img  src="img/profile.png" alt="" class="user_img">
-                                            <div class="account_review">
-                                                <p><strong>Username</strong></p>
-                                                <p class="yelow"><ion-icon class="yelow" name='star'></ion-icon> 4.5 </p>
-                                                <p>
-                                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                                                </p>
-                                            </div>
-                                        </div>
+                                    <div class='container_reviews'>
+                                    <h3 class="title_reviews" style="font-size: 20px;">
+                                    <?php
+                                        $s = $_GET['job'];
+                                        $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $result = $conn->query($sql) or die($conn->error);
+                                        while($data = $result->fetch_assoc()){
+                                            $userid = $data['usersId'];
+                                        }
 
+                                        $sql = "SELECT * FROM comments WHERE selected_user_id = $userid;";
+                                        $result = $conn->query($sql);
+                                        if ($result = mysqli_query($conn, $sql)) {
+                                            // Return the number of rows in result set
+                                            $rowcount = mysqli_num_rows( $result );
+                                        }
+                                        if($rowcount == 0){
+                                            echo "There are no reviews about this user, be the first to give one!";
+                                        }
+                                        else{
+                                            echo $rowcount ." reviews";
+                                        }
+                                    ?>
+                                    </h3>
+                                    <?php
+                                        $s = $_GET['job'];
+                                        $sql = "SELECT * FROM jobs WHERE jobsId=$s";
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: jobs.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        $result = $conn->query($sql) or die($conn->error);
+                                        while($data = $result->fetch_assoc()){
+                                            $userid = $data['usersId'];
+                                        }
+
+                                        $sql = "SELECT * FROM comments WHERE selected_user_id = $userid;";
+                                        $result = $conn->query($sql);
+                                        if ($result = mysqli_query($conn, $sql)) {
+                                            // Return the number of rows in result set
+                                            $rowcount = mysqli_num_rows( $result );
+                                        }
+                                        //echo $rowcount;
+                                        $sql = "SELECT * FROM comments WHERE selected_user_id = ? ORDER BY id DESC;";
+                                        $stmt = mysqli_stmt_init($conn);
+                                        if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                            header("location: ../add-images.php?error=stmtfailed");
+                                            exit();
+                                        }
+                                        
+                                        mysqli_stmt_bind_param($stmt, "i", $userid);
+                                        mysqli_stmt_execute($stmt);
+                                        $resultData = mysqli_stmt_get_result($stmt);
+
+                                        for($i = 0; $i < $rowcount; $i++){
+                                            echo "
+                                            <div class='reviews'>
+                                                <img class='user_img' src='img/profile.png' alt=''>
+                                                <div class='account_review'>
+                                                    <p><strong>";
+                                                    if ($row = mysqli_fetch_assoc($resultData)) {
+                                                        $commentid = $row["id"];
+                                                    }
+                                                    $comments = getAllComments($conn, $commentid);
+                                                    foreach($comments as $comment){
+                                                        echo $comment['usersUid'];
+                                                    }
+                                                    echo "
+                                                    </strong></p>
+                                                    <p class='yelow'><ion-icon class='yelow' name='star'></ion-icon>
+                                                    ";
+                                                    foreach($comments as $comment){
+                                                        echo $comment['rating'];
+                                                    }
+                                                    echo "
+                                                    </p>
+                                                    <p>";
+                                                    foreach($comments as $comment){
+                                                        echo $comment['comment'];
+                                                    }
+                                                        echo "
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            ";
+                                        }
+                                    ?>
+                                    
                                         <div class="review_btn">
                                             <a  href="#" class="view_reviews">View all reviews</a>
-                                            <a href='#' class="button Submit_review">Submit review</a>
+                                            <?php
+                                                    if($_SESSION["userid"] == $userid){
+                                                        echo "<p class='button Submit_review' style='cursor: default;'> Can not review yourself</p>";
+                                                    }
+                                                    else{
+                                                        echo "<a class='button Submit_review' href='comments.php?job=".$s."'> Submit review</a>";
+                                                    }
+                                            ?>
+                                            
                                         </div>
                                     </div>
                             </div>
