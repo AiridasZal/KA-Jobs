@@ -10,11 +10,12 @@
     include_once 'header.php';
 ?>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/add-images.css">
 <main class="main">
     <div class="l-form container content">
         <form action="includes/add-images.inc.php" method="post" enctype="multipart/form-data" class="form" style="width: 700px;">
             <h1 class="form__title">Create a listing</h1>
-            <p class="form__description">General information     2/3</p>
+            <p class="form__description">General information     2/2</p>
             <div class="form-group text-center" style="position: relative;" >
                 <span class="img-div">
                     <div class="img-placeholder"  onClick="triggerClick()">
@@ -61,7 +62,7 @@
                         }
                     }
                     </script>
-                    
+                    </div>
                 <!-- MODAL SECTION -->
                 <div class="bg-modal">
                     <div class="modal-content">

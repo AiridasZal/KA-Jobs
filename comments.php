@@ -1,5 +1,12 @@
 <?php
+    ini_set('display_errors',0);
+    session_start();
+    if (!isset($_SESSION["useruid"])) {
+        header("location: login.php");
+    }
     include_once 'header.php';
+    require_once 'includes/dbh.inc.php';
+    require_once 'includes/functions.inc.php';
 ?>
 
 <style>
@@ -39,6 +46,7 @@
 
                     <input type="hidden" id="star_rating" name="star_rating" value="1"/>
                     <input type="hidden" id="user_id" name="user_id" value="<?php echo $_SESSION["userid"]?>"/>
+                    <input type="hidden" id="user_id" name="job_id" value="<?php echo $_GET["job"]?>"/>
                 </div>
             </div>
         </section>

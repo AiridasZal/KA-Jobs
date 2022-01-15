@@ -13,7 +13,7 @@ if (isset($_POST["submit"])) {
     $_SESSION["location"] = $location;
     $_SESSION["price"] = $price;
     $_SESSION["category"] = $category;
-    $_SESSION["subcategory"] = $subcategory;
+    $_SESSION["subCategory"] = $subcategory;
     $_SESSION["desc"] = $desc;
 
     require_once 'dbh.inc.php';

@@ -17,3 +17,7 @@ CREATE TABLE gallery (
    	 galleryOrder LONGTEXT NOT NULL,
    	 FOREIGN KEY (jobsId) REFERENCES jobs(jobsId)
 );
+
+
+ALTER TABLE users
+ADD phoneNumber INT(9), DEFAULT NULL;

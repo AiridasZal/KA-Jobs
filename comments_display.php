@@ -1,18 +1,13 @@
 <?php
     include_once 'header.php';
 
-    $serverName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "vertrigo";
-    $dbName = "jobly";
-
-    $conn = mysqli_connect($serverName, $dbUsername, $dbPassword, $dbName);
+    require_once 'includes/dbh.inc.php';
 
     function getAllComments($conn){
-        $sql = "SELECT * FROM `comments` AS `c` INNER JOIN `users` AS `u` ON `u`.`usersId` = `c`.`editor_id`;";
+        $sql = "SELECT * FROM `comments` AS `c` INNER JOIN `users` AS `u` ON `u`.`usersId` = `c`.`editor_id` ORDER BY id ASC;";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("location: ../signup.php?error=stmtfailed");
+            header("location: ../comments_display.php?error=stmtfailed");
             exit();
         }
     
@@ -49,9 +44,30 @@
                     <div class="rating">
                     <?php
                             $comments = getAllComments($conn);
-
+                            
                             foreach($comments as $comment){
-                                echo $comment['usersUid'] . '   įvertino ' . $comment['rating'] . ' žvaigždutėmis.' . "<br>" .  ' Komentaras:  ' . $comment['comment'];
+                                $user = $comment['selected_user_id'];
+                            }
+
+                            $sql = "SELECT * FROM users WHERE usersId=$user";
+                            $stmt = mysqli_stmt_init($conn);
+                            if (!mysqli_stmt_prepare($stmt, $sql)) {
+                                header("location: ../comments.php?error=stmtfailed");
+                                exit();
+                            }
+                        
+                            mysqli_stmt_execute($stmt);
+                        
+                            $userId = mysqli_stmt_get_result($stmt);
+                        
+                            mysqli_stmt_close($stmt);
+                        
+                            foreach($userId as $user){
+                                $selecUser = $user['usersUid'];
+                            }
+                            
+                            foreach($comments as $comment){
+                                echo $comment['usersUid'] . '   įvertino <strong>' . $selecUser  .'</strong> '. $comment['rating'] . ' žvaigždutėmis.' . "<br>" .  ' Komentaras:  ' . $comment['comment'];
                                 echo "<br>";
                                 echo "<br>";
                                 echo "<br>";
